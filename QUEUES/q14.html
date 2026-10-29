@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q14 - Queues</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Queues</b></a></p>
+<h1>Q14. Length of the longest valid substring</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main()
+{
+    char s[100];
+    int stack[100], top = -1;
+    int i, len, max = 0, last = -1;
+
+    printf(&quot;Enter brackets: &quot;);
+    scanf(&quot;%99s&quot;, s);
+
+    len = strlen(s);
+
+    for(i = 0; i &lt; len; i++)
+    {
+        if(s[i] == &#x27;(&#x27;)
+            stack[++top] = i;
+        else
+        {
+            if(top == -1)
+                last = i;
+            else
+            {
+                top--;
+
+                if(top == -1)
+                {
+                    if(i - last &gt; max)
+                        max = i - last;
+                }
+                else
+                {
+                    if(i - stack[top] &gt; max)
+                        max = i - stack[top];
+                }
+            }
+        }
+    }
+
+    printf(&quot;Longest valid substring length: %d&quot;, max);
+
+    return 0;
+}</pre>
+<h2>Output</h2>
+<pre class="out">Enter brackets: (()())
+Longest valid substring length: 6</pre>
+<p class="links"><a href="q13.html">&larr; Previous</a> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; <a href="q15.html">Next &rarr;</a></p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>

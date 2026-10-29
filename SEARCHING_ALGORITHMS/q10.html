@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q10 - Searching Algorithms</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Searching Algorithms</b></a></p>
+<h1>Q10. Calculate the best and worst complexity of the binary searching algorithm with exact time taken by the algorithm on integer array.</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+#include &lt;time.h&gt;
+
+int main()
+{
+    int a[100], n, i, x;
+    int low, high, mid, found = 0;
+    clock_t start, end;
+    double time_taken;
+
+    printf(&quot;Enter number of elements: &quot;);
+    scanf(&quot;%d&quot;, &amp;n);
+
+    printf(&quot;Enter sorted array elements: &quot;);
+    for (i = 0; i &lt; n; i++)
+        scanf(&quot;%d&quot;, &amp;a[i]);
+
+    printf(&quot;Enter value to search: &quot;);
+    scanf(&quot;%d&quot;, &amp;x);
+
+    low = 0;
+    high = n - 1;
+
+    start = clock();
+
+    while (low &lt;= high)
+    {
+        mid = (low + high) / 2;
+
+        if (a[mid] == x)
+        {
+            found = 1;
+            break;
+        }
+        else if (a[mid] &lt; x)
+            low = mid + 1;
+        else
+            high = mid - 1;
+    }
+
+    end = clock();
+
+    time_taken = (double)(end - start) / CLOCKS_PER_SEC;
+
+    if (found == 1)
+        printf(&quot;Element found at position %d\n&quot;, mid + 1);
+    else
+        printf(&quot;Element not found\n&quot;);
+
+    printf(&quot;Best Case Complexity: O(1)\n&quot;);
+    printf(&quot;Worst Case Complexity: O(log n)\n&quot;);
+    printf(&quot;Time taken: %f seconds\n&quot;, time_taken);
+
+    return 0;
+}</pre>
+<h2>Output</h2>
+<pre class="out">Enter number of elements: 5
+Enter sorted array elements: 3
+7
+12
+19
+25
+Enter value to search: 19
+Element found at position 4
+Best Case Complexity: O(1)
+Worst Case Complexity: O(log n)
+Time taken: 0.000001 seconds</pre>
+<p class="links"><a href="q9.html">&larr; Previous</a> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; </p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>

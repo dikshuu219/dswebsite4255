@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q5 - Queues</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Queues</b></a></p>
+<h1>Q5. Implement the operations of circular queue in an integer array (insert, delete, peek, isempty, isfull)</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+
+int a[5], front = -1, rear = -1;
+
+void insert()
+{
+    int x;
+
+    if(front == (rear + 1) % 5)
+        printf(&quot;Queue is Full&quot;);
+    else
+    {
+        printf(&quot;Enter number: &quot;);
+        scanf(&quot;%d&quot;, &amp;x);
+
+        if(front == -1)
+            front = 0;
+
+        rear = (rear + 1) % 5;
+        a[rear] = x;
+    }
+}
+
+void delete()
+{
+    if(front == -1)
+        printf(&quot;Queue is Empty&quot;);
+    else
+    {
+        printf(&quot;Deleted: %d&quot;, a[front]);
+
+        if(front == rear)
+            front = rear = -1;
+        else
+            front = (front + 1) % 5;
+    }
+}
+
+void peek()
+{
+    if(front == -1)
+        printf(&quot;Queue is Empty&quot;);
+    else
+        printf(&quot;Front value: %d&quot;, a[front]);
+}
+
+void isempty()
+{
+    if(front == -1)
+        printf(&quot;Queue is Empty&quot;);
+    else
+        printf(&quot;Queue is not Empty&quot;);
+}
+
+void isfull()
+{
+    if(front == (rear + 1) % 5)
+        printf(&quot;Queue is Full&quot;);
+    else
+        printf(&quot;Queue is not Full&quot;);
+}
+
+int main()
+{
+    int ch;
+
+    while(1)
+    {
+        printf(&quot;\n1. Insert&quot;);
+        printf(&quot;\n2. Delete&quot;);
+        printf(&quot;\n3. Peek&quot;);
+        printf(&quot;\n4. IsEmpty&quot;);
+        printf(&quot;\n5. IsFull&quot;);
+        printf(&quot;\n6. Exit&quot;);
+        printf(&quot;\nEnter choice: &quot;);
+        scanf(&quot;%d&quot;, &amp;ch);
+
+        if(ch == 1)
+            insert();
+        else if(ch == 2)
+            delete();
+        else if(ch == 3)
+            peek();
+        else if(ch == 4)
+            isempty();
+        else if(ch == 5)
+            isfull();
+        else if(ch == 6)
+            break;
+        else
+            printf(&quot;Wrong choice&quot;);
+    }
+
+    return 0;
+}</pre>
+<h2>Output</h2>
+<pre class="out">1. Insert
+2. Delete
+3. Peek
+4. IsEmpty
+5. IsFull
+6. Exit
+Enter choice: 1
+Enter number: 12
+
+1. Insert
+2. Delete
+3. Peek
+4. IsEmpty
+5. IsFull
+6. Exit
+Enter choice: 1
+Enter number: 7
+
+1. Insert
+2. Delete
+3. Peek
+4. IsEmpty
+5. IsFull
+6. Exit
+Enter choice: 1
+Enter number: 3
+
+1. Insert
+2. Delete
+3. Peek
+4. IsEmpty
+5. IsFull
+6. Exit
+Enter choice: 3
+Front value: 12
+1. Insert
+2. Delete
+3. Peek
+4. IsEmpty
+5. IsFull
+6. Exit
+Enter choice: 2
+Deleted: 12
+1. Insert
+2. Delete
+3. Peek
+4. IsEmpty
+5. IsFull
+6. Exit
+Enter choice: 4
+Queue is not Empty
+1. Insert
+2. Delete
+3. Peek
+4. IsEmpty
+5. IsFull
+6. Exit
+Enter choice: 5
+Queue is not Full
+1. Insert
+2. Delete
+3. Peek
+4. IsEmpty
+5. IsFull
+6. Exit
+Enter choice: 6</pre>
+<p class="links"><a href="q4.html">&larr; Previous</a> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; <a href="q6.html">Next &rarr;</a></p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>

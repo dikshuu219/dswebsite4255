@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q8 - Searching Algorithms</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Searching Algorithms</b></a></p>
+<h1>Q8. Enter a string from the user, enter a character and perform binary search algorithm through iteration.</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main()
+{
+    char s[100], ch, temp;
+    int i, j, low, high, mid, found = 0;
+
+    printf(&quot;Enter a string: &quot;);
+    scanf(&quot;%s&quot;, s);
+
+    for (i = 0; s[i] != &#x27;\0&#x27;; i++)
+    {
+        for (j = i + 1; s[j] != &#x27;\0&#x27;; j++)
+        {
+            if (s[i] &gt; s[j])
+            {
+                temp = s[i];
+                s[i] = s[j];
+                s[j] = temp;
+            }
+        }
+    }
+
+    printf(&quot;Sorted string: %s\n&quot;, s);
+
+    printf(&quot;Enter character to search: &quot;);
+    scanf(&quot; %c&quot;, &amp;ch);
+
+    low = 0;
+    high = strlen(s) - 1;
+
+    while (low &lt;= high)
+    {
+        mid = (low + high) / 2;
+
+        if (s[mid] == ch)
+        {
+            printf(&quot;Character found at position %d&quot;, mid + 1);
+            found = 1;
+            break;
+        }
+        else if (s[mid] &lt; ch)
+            low = mid + 1;
+        else
+            high = mid - 1;
+    }
+
+    if (found == 0)
+        printf(&quot;Character not found&quot;);
+
+    return 0;
+}</pre>
+<h2>Output</h2>
+<pre class="out">Enter a string: abcdefg
+Sorted string: abcdefg
+Enter character to search: e
+Character found at position 5</pre>
+<p class="links"><a href="q7.html">&larr; Previous</a> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; <a href="q9.html">Next &rarr;</a></p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>

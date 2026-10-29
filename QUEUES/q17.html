@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q17 - Queues</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Queues</b></a></p>
+<h1>Q17. Queue based approach for first non-repeating character in a stream</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+
+int main()
+{
+    char s[100], q[100];
+    int i, j, front = 0, rear = -1, count;
+
+    printf(&quot;Enter string: &quot;);
+    scanf(&quot;%s&quot;, s);
+
+    for(i = 0; s[i] != &#x27;\0&#x27;; i++)
+    {
+        q[++rear] = s[i];
+
+        while(front &lt;= rear)
+        {
+            count = 0;
+
+            for(j = 0; j &lt;= i; j++)
+            {
+                if(s[j] == q[front])
+                    count++;
+            }
+
+            if(count == 1)
+                break;
+
+            front++;
+        }
+
+        if(front &lt;= rear)
+            printf(&quot;%c &quot;, q[front]);
+        else
+            printf(&quot;-1 &quot;);
+    }
+
+    return 0;
+}</pre>
+<h2>Output</h2>
+<pre class="out">Enter string: aabc
+a -1 b b </pre>
+<p class="links"><a href="q16.html">&larr; Previous</a> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; <a href="q18.html">Next &rarr;</a></p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q13 - Queues</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Queues</b></a></p>
+<h1>Q13. Find the first circular tour that visits all petrol pumps</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+
+int main()
+{
+    int petrol[10], distance[10];
+    int n, i, start = 0, balance = 0, total = 0;
+
+    printf(&quot;Enter number of petrol pumps: &quot;);
+    scanf(&quot;%d&quot;, &amp;n);
+
+    for(i = 0; i &lt; n; i++)
+    {
+        printf(&quot;Enter petrol and distance: &quot;);
+        scanf(&quot;%d %d&quot;, &amp;petrol[i], &amp;distance[i]);
+    }
+
+    for(i = 0; i &lt; n; i++)
+    {
+        balance = balance + petrol[i] - distance[i];
+        total = total + petrol[i] - distance[i];
+
+        if(balance &lt; 0)
+        {
+            start = i + 1;
+            balance = 0;
+        }
+    }
+
+    if(total &lt; 0)
+        printf(&quot;Circular tour is not possible&quot;);
+    else
+        printf(&quot;First petrol pump: %d&quot;, start + 1);
+
+    return 0;
+}</pre>
+<h2>Output</h2>
+<pre class="out">Enter number of petrol pumps: 4
+Enter petrol and distance: 4 6
+Enter petrol and distance: 6 5
+Enter petrol and distance: 7 3
+Enter petrol and distance: 4 5
+First petrol pump: 2</pre>
+<p class="links"><a href="q12.html">&larr; Previous</a> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; <a href="q14.html">Next &rarr;</a></p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>

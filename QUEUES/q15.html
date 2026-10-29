@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q15 - Queues</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Queues</b></a></p>
+<h1>Q15. Find the Next Greater Element</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+
+int main()
+{
+    int a[100], n, i, j;
+
+    printf(&quot;Enter number of elements: &quot;);
+    scanf(&quot;%d&quot;, &amp;n);
+
+    printf(&quot;Enter elements: &quot;);
+    for(i = 0; i &lt; n; i++)
+        scanf(&quot;%d&quot;, &amp;a[i]);
+
+    for(i = 0; i &lt; n; i++)
+    {
+        for(j = i + 1; j &lt; n; j++)
+        {
+            if(a[j] &gt; a[i])
+                break;
+        }
+
+        if(j &lt; n)
+            printf(&quot;%d -&gt; %d\n&quot;, a[i], a[j]);
+        else
+            printf(&quot;%d -&gt; -1\n&quot;, a[i]);
+    }
+
+    return 0;
+}</pre>
+<h2>Output</h2>
+<pre class="out">Enter number of elements: 5
+Enter elements: 4
+5
+2
+25
+10
+4 -&gt; 5
+5 -&gt; 25
+2 -&gt; 25
+25 -&gt; -1
+10 -&gt; -1</pre>
+<p class="links"><a href="q14.html">&larr; Previous</a> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; <a href="q16.html">Next &rarr;</a></p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>

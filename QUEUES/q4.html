@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q4 - Queues</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Queues</b></a></p>
+<h1>Q4. Implement the operations of queue dynamically of string (insert, delete, peek, isempty, isfull)</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+
+struct node
+{
+    char data[50];
+    struct node *next;
+};
+
+struct node *front = NULL, *rear = NULL;
+
+void insert()
+{
+    struct node *p;
+
+    p = (struct node *)malloc(sizeof(struct node));
+
+    if(p == NULL)
+        printf(&quot;Queue is Full&quot;);
+    else
+    {
+        printf(&quot;Enter string: &quot;);
+        scanf(&quot;%49s&quot;, p-&gt;data);
+
+        p-&gt;next = NULL;
+
+        if(front == NULL)
+            front = rear = p;
+        else
+        {
+            rear-&gt;next = p;
+            rear = p;
+        }
+    }
+}
+
+void delete()
+{
+    struct node *p;
+
+    if(front == NULL)
+        printf(&quot;Queue is Empty&quot;);
+    else
+    {
+        p = front;
+        printf(&quot;Deleted: %s&quot;, front-&gt;data);
+        front = front-&gt;next;
+
+        if(front == NULL)
+            rear = NULL;
+
+        free(p);
+    }
+}
+
+void peek()
+{
+    if(front == NULL)
+        printf(&quot;Queue is Empty&quot;);
+    else
+        printf(&quot;Front string: %s&quot;, front-&gt;data);
+}
+
+void isempty()
+{
+    if(front == NULL)
+        printf(&quot;Queue is Empty&quot;);
+    else
+        printf(&quot;Queue is not Empty&quot;);
+}
+
+void isfull()
+{
+    struct node *p;
+
+    p = (struct node *)malloc(sizeof(struct node));
+
+    if(p == NULL)
+        printf(&quot;Queue is Full&quot;);
+    else
+    {
+        printf(&quot;Queue is not Full&quot;);
+        free(p);
+    }
+}
+
+int main()
+{
+    int ch;
+
+    while(1)
+    {
+        printf(&quot;\n\n1. Insert&quot;);
+        printf(&quot;\n2. Delete&quot;);
+        printf(&quot;\n3. Peek&quot;);
+        printf(&quot;\n4. IsEmpty&quot;);
+        printf(&quot;\n5. IsFull&quot;);
+        printf(&quot;\n6. Exit&quot;);
+        printf(&quot;\nEnter choice: &quot;);
+        scanf(&quot;%d&quot;, &amp;ch);
+
+        if(ch == 1)
+            insert();
+        else if(ch == 2)
+            delete();
+        else if(ch == 3)
+            peek();
+        else if(ch == 4)
+            isempty();
+        else if(ch == 5)
+            isfull();
+        else if(ch == 6)
+            break;
+        else
+            printf(&quot;Wrong choice&quot;);
+    }
+
+    return 0;
+}</pre>
+<h2>Output</h2>
+<pre class="out">1. Insert
+2. Delete
+3. Peek
+4. IsEmpty
+5. IsFull
+6. Exit
+Enter choice: 1
+Enter string: apple
+
+
+1. Insert
+2. Delete
+3. Peek
+4. IsEmpty
+5. IsFull
+6. Exit
+Enter choice: 1
+Enter string: banana
+
+
+1. Insert
+2. Delete
+3. Peek
+4. IsEmpty
+5. IsFull
+6. Exit
+Enter choice: 1
+Enter string: mango
+
+
+1. Insert
+2. Delete
+3. Peek
+4. IsEmpty
+5. IsFull
+6. Exit
+Enter choice: 3
+Front string: apple
+
+1. Insert
+2. Delete
+3. Peek
+4. IsEmpty
+5. IsFull
+6. Exit
+Enter choice: 2
+Deleted: apple
+
+1. Insert
+2. Delete
+3. Peek
+4. IsEmpty
+5. IsFull
+6. Exit
+Enter choice: 4
+Queue is not Empty
+
+1. Insert
+2. Delete
+3. Peek
+4. IsEmpty
+5. IsFull
+6. Exit
+Enter choice: 5
+Queue is not Full
+
+1. Insert
+2. Delete
+3. Peek
+4. IsEmpty
+5. IsFull
+6. Exit
+Enter choice: 6</pre>
+<p class="links"><a href="q3.html">&larr; Previous</a> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; <a href="q5.html">Next &rarr;</a></p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q18 - Queues</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Queues</b></a></p>
+<h1>Q18. Reverse First K elements of Queue</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+
+int main()
+{
+    int a[100], stack[100];
+    int n, k, i, top = -1;
+
+    printf(&quot;Enter number of elements: &quot;);
+    scanf(&quot;%d&quot;, &amp;n);
+
+    printf(&quot;Enter queue elements: &quot;);
+    for(i = 0; i &lt; n; i++)
+        scanf(&quot;%d&quot;, &amp;a[i]);
+
+    printf(&quot;Enter K: &quot;);
+    scanf(&quot;%d&quot;, &amp;k);
+
+    if(k &lt; 1 || k &gt; n)
+    {
+        printf(&quot;Invalid K&quot;);
+        return 0;
+    }
+
+    for(i = 0; i &lt; k; i++)
+        stack[++top] = a[i];
+
+    for(i = 0; i &lt; k; i++)
+        a[i] = stack[top--];
+
+    printf(&quot;Queue after reversing: &quot;);
+    for(i = 0; i &lt; n; i++)
+        printf(&quot;%d &quot;, a[i]);
+
+    return 0;
+}</pre>
+<h2>Output</h2>
+<pre class="out">Enter number of elements: 5
+Enter queue elements: 1
+2
+3
+4
+5
+Enter K: 3
+Queue after reversing: 3 2 1 4 5 </pre>
+<p class="links"><a href="q17.html">&larr; Previous</a> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; <a href="q19.html">Next &rarr;</a></p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>

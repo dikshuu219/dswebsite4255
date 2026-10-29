@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q5 - Searching Algorithms</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Searching Algorithms</b></a></p>
+<h1>Q5. Enter a integer array from the user, enter an integer value and perform binary search algorithm through iteration.</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+
+int main()
+{
+    int a[100], n, i, x;
+    int low, high, mid, found = 0;
+
+    printf(&quot;Enter number of elements: &quot;);
+    scanf(&quot;%d&quot;, &amp;n);
+
+    printf(&quot;Enter array elements in sorted order: &quot;);
+    for (i = 0; i &lt; n; i++)
+        scanf(&quot;%d&quot;, &amp;a[i]);
+
+    printf(&quot;Enter value to search: &quot;);
+    scanf(&quot;%d&quot;, &amp;x);
+
+    low = 0;
+    high = n - 1;
+
+    while (low &lt;= high)
+    {
+        mid = (low + high) / 2;
+
+        if (a[mid] == x)
+        {
+            printf(&quot;Element found at position %d&quot;, mid + 1);
+            found = 1;
+            break;
+        }
+        else if (a[mid] &lt; x)
+            low = mid + 1;
+        else
+            high = mid - 1;
+    }
+
+    if (found == 0)
+        printf(&quot;Element not found&quot;);
+
+    return 0;
+}</pre>
+<h2>Output</h2>
+<pre class="out">Enter number of elements: 5
+Enter array elements in sorted order: 3
+7
+12
+19
+25
+Enter value to search: 19
+Element found at position 4</pre>
+<p class="links"><a href="q4.html">&larr; Previous</a> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; <a href="q6.html">Next &rarr;</a></p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>
