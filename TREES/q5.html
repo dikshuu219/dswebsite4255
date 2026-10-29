@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q5 - Trees</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Trees</b></a></p>
+<h1>Q5. Construct binary tree from postorder and inorder traversal</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+struct node
+{
+    char data;
+    struct node *left, *right;
+};
+
+int index;
+
+struct node *create(char x)
+{
+    struct node *p;
+
+    p = (struct node *)malloc(sizeof(struct node));
+    p-&gt;data = x;
+    p-&gt;left = NULL;
+    p-&gt;right = NULL;
+
+    return p;
+}
+
+int find(char inorder[], char x, int start, int end)
+{
+    int i;
+
+    for (i = start; i &lt;= end; i++)
+    {
+        if (inorder[i] == x)
+            return i;
+    }
+
+    return -1;
+}
+
+struct node *build(char postorder[], char inorder[],
+                   int start, int end)
+{
+    struct node *root;
+    int pos;
+
+    if (start &gt; end)
+        return NULL;
+
+    root = create(postorder[index]);
+    index--;
+
+    if (start == end)
+        return root;
+
+    pos = find(inorder, root-&gt;data, start, end);
+
+    root-&gt;right = build(postorder, inorder, pos + 1, end);
+    root-&gt;left = build(postorder, inorder, start, pos - 1);
+
+    return root;
+}
+
+void display(struct node *root)
+{
+    if (root != NULL)
+    {
+        display(root-&gt;left);
+        display(root-&gt;right);
+        printf(&quot;%c &quot;, root-&gt;data);
+    }
+}
+
+int main()
+{
+    char postorder[50], inorder[50];
+    struct node *root;
+    int n;
+
+    printf(&quot;Enter number of nodes: &quot;);
+    scanf(&quot;%d&quot;, &amp;n);
+
+    printf(&quot;Enter postorder: &quot;);
+    scanf(&quot;%49s&quot;, postorder);
+
+    printf(&quot;Enter inorder: &quot;);
+    scanf(&quot;%49s&quot;, inorder);
+
+    index = n - 1;
+
+    root = build(postorder, inorder, 0, n - 1);
+
+    printf(&quot;Postorder of constructed tree: &quot;);
+    display(root);
+
+    return 0;
+}</pre>
+<h2>Output</h2>
+<pre class="out">Enter number of nodes: 6
+Enter postorder: DEBFCA
+Enter inorder: DBEAFC
+Postorder of constructed tree: D E B F C A </pre>
+<p class="links"><a href="q4.html">&larr; Previous</a> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; <a href="q6.html">Next &rarr;</a></p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>

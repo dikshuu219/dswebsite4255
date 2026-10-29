@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q17 - Strings</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Strings</b></a></p>
+<h1>Q17. Enter the string from the user, and count the number of vowels.</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+
+int main()
+{
+    char str[100];
+    int i, count = 0;
+
+    printf(&quot;Enter a string: &quot;);
+    fgets(str, sizeof(str), stdin);
+
+    for(i = 0; str[i] != &#x27;\0&#x27; &amp;&amp; str[i] != &#x27;\n&#x27;; i++)
+    {
+        if(str[i] == &#x27;a&#x27; || str[i] == &#x27;e&#x27; ||
+           str[i] == &#x27;i&#x27; || str[i] == &#x27;o&#x27; ||
+           str[i] == &#x27;u&#x27; || str[i] == &#x27;A&#x27; ||
+           str[i] == &#x27;E&#x27; || str[i] == &#x27;I&#x27; ||
+           str[i] == &#x27;O&#x27; || str[i] == &#x27;U&#x27;)
+        {
+            count++;
+        }
+    }
+
+    printf(&quot;Number of vowels = %d&quot;, count);
+
+    return 0;
+}</pre>
+<h2>Output</h2>
+<pre class="out">Enter a string: education
+Number of vowels = 5</pre>
+<p class="links"><a href="q16.html">&larr; Previous</a> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; <a href="q18.html">Next &rarr;</a></p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q4 - Strings</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Strings</b></a></p>
+<h1>Q4. Enter the string from user and convert into title case ?</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+
+int main()
+{
+    char str[100];
+    int i;
+
+    printf(&quot;Enter a string: &quot;);
+    fgets(str, sizeof(str), stdin);
+
+    for(i = 0; str[i] != &#x27;\0&#x27;; i++)
+    {
+        if(i == 0 || str[i - 1] == &#x27; &#x27;)
+        {
+            if(str[i] &gt;= &#x27;a&#x27; &amp;&amp; str[i] &lt;= &#x27;z&#x27;)
+            {
+                str[i] = str[i] - 32;
+            }
+        }
+        else
+        {
+            if(str[i] &gt;= &#x27;A&#x27; &amp;&amp; str[i] &lt;= &#x27;Z&#x27;)
+            {
+                str[i] = str[i] + 32;
+            }
+        }
+    }
+
+    printf(&quot;Title case = %s&quot;, str);
+
+    return 0;
+}</pre>
+<h2>Output</h2>
+<pre class="out">Enter a string: welcome to data structure
+Title case = Welcome To Data Structure</pre>
+<p class="links"><a href="q3.html">&larr; Previous</a> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; <a href="q5.html">Next &rarr;</a></p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>

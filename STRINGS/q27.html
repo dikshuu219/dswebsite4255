@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q27 - Strings</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Strings</b></a></p>
+<h1>Q27. Display the string on the output screen but ask the text alignment option given by the user (1 for left, 2 for center, 3 right)</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main()
+{
+    char str[100];
+    int choice, i, space;
+
+    printf(&quot;Enter a string: &quot;);
+    scanf(&quot; %[^\n]&quot;, str);
+
+    printf(&quot;1. Left Alignment\n&quot;);
+    printf(&quot;2. Center Alignment\n&quot;);
+    printf(&quot;3. Right Alignment\n&quot;);
+    printf(&quot;Enter your choice: &quot;);
+    scanf(&quot;%d&quot;, &amp;choice);
+
+    space = 30 - strlen(str);
+
+    if(choice == 1)
+    {
+        printf(&quot;%s&quot;, str);
+    }
+    else if(choice == 2)
+    {
+        for(i = 0; i &lt; space / 2; i++)
+            printf(&quot; &quot;);
+
+        printf(&quot;%s&quot;, str);
+    }
+    else if(choice == 3)
+    {
+        for(i = 0; i &lt; space; i++)
+            printf(&quot; &quot;);
+
+        printf(&quot;%s&quot;, str);
+    }
+    else
+    {
+        printf(&quot;Invalid choice&quot;);
+    }
+
+    return 0;
+}</pre>
+<h2>Output</h2>
+<pre class="out">Enter a string: hello world
+1. Left Alignment
+2. Center Alignment
+3. Right Alignment
+Enter your choice: 2
+         hello world</pre>
+<p class="links"><a href="q26.html">&larr; Previous</a> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; <a href="q28.html">Next &rarr;</a></p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>

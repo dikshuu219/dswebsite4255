@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q9 - Trees</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Trees</b></a></p>
+<h1>Q9. Find inorder predecessor and inorder successor of binary search tree (dynamically represented)</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+struct node
+{
+    int data;
+    struct node *left, *right;
+};
+
+struct node *insert(struct node *root, int x)
+{
+    struct node *p;
+
+    if (root == NULL)
+    {
+        p = (struct node *)malloc(sizeof(struct node));
+        p-&gt;data = x;
+        p-&gt;left = NULL;
+        p-&gt;right = NULL;
+        return p;
+    }
+
+    if (x &lt; root-&gt;data)
+        root-&gt;left = insert(root-&gt;left, x);
+    else if (x &gt; root-&gt;data)
+        root-&gt;right = insert(root-&gt;right, x);
+
+    return root;
+}
+
+void findPreSuc(struct node *root, int x)
+{
+    struct node *pre = NULL;
+    struct node *suc = NULL;
+    struct node *p = root;
+
+    while (p != NULL)
+    {
+        if (p-&gt;data &lt; x)
+        {
+            pre = p;
+            p = p-&gt;right;
+        }
+        else if (p-&gt;data &gt; x)
+        {
+            suc = p;
+            p = p-&gt;left;
+        }
+        else
+        {
+            if (p-&gt;left != NULL)
+            {
+                pre = p-&gt;left;
+                while (pre-&gt;right != NULL)
+                    pre = pre-&gt;right;
+            }
+
+            if (p-&gt;right != NULL)
+            {
+                suc = p-&gt;right;
+                while (suc-&gt;left != NULL)
+                    suc = suc-&gt;left;
+            }
+
+            break;
+        }
+    }
+
+    if (pre == NULL)
+        printf(&quot;Inorder Predecessor not found\n&quot;);
+    else
+        printf(&quot;Inorder Predecessor: %d\n&quot;, pre-&gt;data);
+
+    if (suc == NULL)
+        printf(&quot;Inorder Successor not found\n&quot;);
+    else
+        printf(&quot;Inorder Successor: %d\n&quot;, suc-&gt;data);
+}
+
+int main()
+{
+    struct node *root = NULL;
+    int n, x, i, value;
+
+    printf(&quot;Enter number of nodes: &quot;);
+    scanf(&quot;%d&quot;, &amp;n);
+
+    for (i = 0; i &lt; n; i++)
+    {
+        printf(&quot;Enter value: &quot;);
+        scanf(&quot;%d&quot;, &amp;value);
+        root = insert(root, value);
+    }
+
+    printf(&quot;Enter value to find predecessor and successor: &quot;);
+    scanf(&quot;%d&quot;, &amp;x);
+
+    findPreSuc(root, x);
+
+    return 0;
+}</pre>
+<h2>Output</h2>
+<pre class="out">Enter number of nodes: 7
+Enter value: 50
+Enter value: 30
+Enter value: 70
+Enter value: 20
+Enter value: 40
+Enter value: 60
+Enter value: 80
+Enter value to find predecessor and successor: 40
+Inorder Predecessor: 30
+Inorder Successor: 50</pre>
+<p class="links"><a href="q8.html">&larr; Previous</a> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; <a href="q10.html">Next &rarr;</a></p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>

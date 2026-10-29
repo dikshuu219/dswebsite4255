@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q16 - Trees</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Trees</b></a></p>
+<h1>Q16. Construct binary search tree from given postorder traversal through arrays</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+struct node
+{
+    int data;
+    struct node *left, *right;
+};
+
+struct node *insert(struct node *root, int x)
+{
+    if (root == NULL)
+    {
+        root = (struct node *)malloc(sizeof(struct node));
+        root-&gt;data = x;
+        root-&gt;left = NULL;
+        root-&gt;right = NULL;
+        return root;
+    }
+
+    if (x &lt; root-&gt;data)
+        root-&gt;left = insert(root-&gt;left, x);
+    else if (x &gt; root-&gt;data)
+        root-&gt;right = insert(root-&gt;right, x);
+
+    return root;
+}
+
+void preorder(struct node *root)
+{
+    if (root != NULL)
+    {
+        printf(&quot;%d &quot;, root-&gt;data);
+        preorder(root-&gt;left);
+        preorder(root-&gt;right);
+    }
+}
+
+int main()
+{
+    struct node *root = NULL;
+    int a[100], n, i;
+
+    printf(&quot;Enter number of nodes: &quot;);
+    scanf(&quot;%d&quot;, &amp;n);
+
+    printf(&quot;Enter postorder elements: &quot;);
+    for (i = 0; i &lt; n; i++)
+        scanf(&quot;%d&quot;, &amp;a[i]);
+
+    for (i = 0; i &lt; n; i++)
+        root = insert(root, a[i]);
+
+    printf(&quot;Preorder traversal: &quot;);
+    preorder(root);
+
+    return 0;
+}</pre>
+<h2>Output</h2>
+<pre class="out">Enter number of nodes: 7
+Enter postorder elements: 20
+40
+30
+60
+80
+70
+50
+Preorder traversal: 20 40 30 60 50 80 70 </pre>
+<p class="links"><a href="q15.html">&larr; Previous</a> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; <a href="q17.html">Next &rarr;</a></p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>

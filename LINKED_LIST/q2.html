@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q2 - Linked List</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Linked List</b></a></p>
+<h1>Q2. Implement the operations of single circular linked list storing integer values (insert at begin,insert at pos,insert at end,delete at begin,delete at end, delete at pos, isempty, isfull, display, search)</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+struct node
+{
+    int data;
+    struct node *next;
+};
+
+struct node *head = NULL;
+
+int isempty()
+{
+    return head == NULL;
+}
+
+int isfull()
+{
+    struct node *p = (struct node *)malloc(sizeof(struct node));
+
+    if (p == NULL)
+        return 1;
+
+    free(p);
+    return 0;
+}
+
+void insertBegin(int x)
+{
+    struct node *p, *q;
+
+    p = (struct node *)malloc(sizeof(struct node));
+
+    if (p == NULL)
+    {
+        printf(&quot;List is full\n&quot;);
+        return;
+    }
+
+    p-&gt;data = x;
+
+    if (head == NULL)
+    {
+        head = p;
+        p-&gt;next = head;
+        return;
+    }
+
+    q = head;
+    while (q-&gt;next != head)
+        q = q-&gt;next;
+
+    p-&gt;next = head;
+    q-&gt;next = p;
+    head = p;
+}
+
+void insertEnd(int x)
+{
+    struct node *p, *q;
+
+    p = (struct node *)malloc(sizeof(struct node));
+
+    if (p == NULL)
+    {
+        printf(&quot;List is full\n&quot;);
+        return;
+    }
+
+    p-&gt;data = x;
+
+    if (head == NULL)
+    {
+        head = p;
+        p-&gt;next = head;
+        return;
+    }
+
+    q = head;
+    while (q-&gt;next != head)
+        q = q-&gt;next;
+
+    q-&gt;next = p;
+    p-&gt;next = head;
+}
+
+void insertPos(int x, int pos)
+{
+    struct node *p, *q;
+    int i;
+
+    if (pos &lt; 1)
+    {
+        printf(&quot;Invalid position\n&quot;);
+        return;
+    }
+
+    if (pos == 1)
+    {
+        insertBegin(x);
+        return;
+    }
+
+    if (head == NULL)
+    {
+        printf(&quot;Invalid position\n&quot;);
+        return;
+    }
+
+    q = head;
+
+    for (i = 1; i &lt; pos - 1 &amp;&amp; q-&gt;next != head; i++)
+        q = q-&gt;next;
+
+    if (i != pos - 1)
+    {
+        printf(&quot;Invalid position\n&quot;);
+        return;
+    }
+
+    p = (struct node *)malloc(sizeof(struct node));
+
+    if (p == NULL)
+    {
+        printf(&quot;List is full\n&quot;);
+        return;
+    }
+
+    p-&gt;data = x;
+    p-&gt;next = q-&gt;next;
+    q-&gt;next = p;
+}
+
+void deleteBegin()
+{
+    struct node *p, *q;
+
+    if (isempty())
+    {
+        printf(&quot;List is empty\n&quot;);
+        return;
+    }
+
+    p = head;
+
+    if (head-&gt;next == head)
+    {
+        head = NULL;
+        free(p);
+        return;
+    }
+
+    q = head;
+    while (q-&gt;next != head)
+        q = q-&gt;next;
+
+    head = head-&gt;next;
+    q-&gt;next = head;
+    free(p);
+}
+
+void deleteEnd()
+{
+    struct node *p, *q;
+
+    if (isempty())
+    {
+        printf(&quot;List is empty\n&quot;);
+        return;
+    }
+
+    if (head-&gt;next == head)
+    {
+        free(head);
+        head = NULL;
+        return;
+    }
+
+    q = head;
+
+    while (q-&gt;next-&gt;next != head)
+        q = q-&gt;next;
+
+    p = q-&gt;next;
+    q-&gt;next = head;
+    free(p);
+}
+
+void deletePos(int pos)
+{
+    struct node *p, *q;
+    int i;
+
+    if (pos &lt; 1 || isempty())
+    {
+        printf(&quot;Invalid position or empty list\n&quot;);
+        return;
+    }
+
+    if (pos == 1)
+    {
+        deleteBegin();
+        return;
+    }
+
+    q = head;
+
+    for (i = 1; i &lt; pos - 1 &amp;&amp; q-&gt;next != head; i++)
+        q = q-&gt;next;
+
+    if (q-&gt;next == head)
+    {
+        printf(&quot;Invalid position\n&quot;);
+        return;
+    }
+
+    p = q-&gt;next;
+    q-&gt;next = p-&gt;next;
+    free(p);
+}
+
+void display()
+{
+    struct node *p;
+
+    if (isempty())
+    {
+        printf(&quot;List is empty\n&quot;);
+        return;
+    }
+
+    p = head;
+
+    do
+    {
+        printf(&quot;%d -&gt; &quot;, p-&gt;data);
+        p = p-&gt;next;
+    } while (p != head);
+
+    printf(&quot;(back to head)\n&quot;);
+}
+
+void search(int x)
+{
+    struct node *p;
+    int pos = 1;
+
+    if (isempty())
+    {
+        printf(&quot;List is empty\n&quot;);
+        return;
+    }
+
+    p = head;
+
+    do
+    {
+        if (p-&gt;data == x)
+        {
+            printf(&quot;Value found at position %d\n&quot;, pos);
+            return;
+        }
+
+        p = p-&gt;next;
+        pos++;
+    } while (p != head);
+
+    printf(&quot;Value not found\n&quot;);
+}
+
+int main()
+{
+    int ch, x, pos;
+
+    do
+    {
+        printf(&quot;\n1. Insert at Begin&quot;);
+        printf(&quot;\n2. Insert at Position&quot;);
+        printf(&quot;\n3. Insert at End&quot;);
+        printf(&quot;\n4. Delete at Begin&quot;);
+        printf(&quot;\n5. Delete at End&quot;);
+        printf(&quot;\n6. Delete at Position&quot;);
+        printf(&quot;\n7. Is Empty&quot;);
+        printf(&quot;\n8. Is Full&quot;);
+        printf(&quot;\n9. Display&quot;);
+        printf(&quot;\n10. Search&quot;);
+        printf(&quot;\n0. Exit&quot;);
+        printf(&quot;\nEnter your choice: &quot;);
+        scanf(&quot;%d&quot;, &amp;ch);
+
+        switch (ch)
+        {
+        case 1:
+            printf(&quot;Enter value: &quot;);
+            scanf(&quot;%d&quot;, &amp;x);
+            insertBegin(x);
+            break;
+
+        case 2:
+            printf(&quot;Enter value and position: &quot;);
+            scanf(&quot;%d%d&quot;, &amp;x, &amp;pos);
+            insertPos(x, pos);
+            break;
+
+        case 3:
+            printf(&quot;Enter value: &quot;);
+            scanf(&quot;%d&quot;, &amp;x);
+            insertEnd(x);
+            break;
+
+        case 4:
+            deleteBegin();
+            break;
+
+        case 5:
+            deleteEnd();
+            break;
+
+        case 6:
+            printf(&quot;Enter position: &quot;);
+            scanf(&quot;%d&quot;, &amp;pos);
+            deletePos(pos);
+            break;
+
+        case 7:
+            if (isempty())
+                printf(&quot;List is empty\n&quot;);
+            else
+                printf(&quot;List is not empty\n&quot;);
+            break;
+
+        case 8:
+            if (isfull())
+                printf(&quot;List is full\n&quot;);
+            else
+                printf(&quot;List is not full\n&quot;);
+            break;
+
+        case 9:
+            display();
+            break;
+
+        case 10:
+            printf(&quot;Enter value to search: &quot;);
+            scanf(&quot;%d&quot;, &amp;x);
+            search(x);
+            break;
+
+        case 0:
+            printf(&quot;Program ended\n&quot;);
+            break;
+
+        default:
+            printf(&quot;Invalid choice\n&quot;);
+        }
+
+    } while (ch != 0);
+
+    return 0;
+}</pre>
+<h2>Output</h2>
+<pre class="out">1. Insert at Begin
+2. Insert at Position
+3. Insert at End
+4. Delete at Begin
+5. Delete at End
+6. Delete at Position
+7. Is Empty
+8. Is Full
+9. Display
+10. Search
+0. Exit
+Enter your choice: 1
+Enter value: 12
+
+1. Insert at Begin
+2. Insert at Position
+3. Insert at End
+4. Delete at Begin
+5. Delete at End
+6. Delete at Position
+7. Is Empty
+8. Is Full
+9. Display
+10. Search
+0. Exit
+Enter your choice: 1
+Enter value: 7
+
+1. Insert at Begin
+2. Insert at Position
+3. Insert at End
+4. Delete at Begin
+5. Delete at End
+6. Delete at Position
+7. Is Empty
+8. Is Full
+9. Display
+10. Search
+0. Exit
+Enter your choice: 1
+Enter value: 3
+
+1. Insert at Begin
+2. Insert at Position
+3. Insert at End
+4. Delete at Begin
+5. Delete at End
+6. Delete at Position
+7. Is Empty
+8. Is Full
+9. Display
+10. Search
+0. Exit
+Enter your choice: 3
+Enter value: 19
+
+1. Insert at Begin
+2. Insert at Position
+3. Insert at End
+4. Delete at Begin
+5. Delete at End
+6. Delete at Position
+7. Is Empty
+8. Is Full
+9. Display
+10. Search
+0. Exit
+Enter your choice: 2
+Enter value and position: 5
+8
+Invalid position
+
+1. Insert at Begin
+2. Insert at Position
+3. Insert at End
+4. Delete at Begin
+5. Delete at End
+6. Delete at Position
+7. Is Empty
+8. Is Full
+9. Display
+10. Search
+0. Exit
+Enter your choice: 9
+3 -&gt; 7 -&gt; 12 -&gt; 19 -&gt; (back to head)
+
+1. Insert at Begin
+2. Insert at Position
+3. Insert at End
+4. Delete at Begin
+5. Delete at End
+6. Delete at Position
+7. Is Empty
+8. Is Full
+9. Display
+10. Search
+0. Exit
+Enter your choice: 10
+Enter value to search: 15
+Value not found
+
+1. Insert at Begin
+2. Insert at Position
+3. Insert at End
+4. Delete at Begin
+5. Delete at End
+6. Delete at Position
+7. Is Empty
+8. Is Full
+9. Display
+10. Search
+0. Exit
+Enter your choice: 4
+
+1. Insert at Begin
+2. Insert at Position
+3. Insert at End
+4. Delete at Begin
+5. Delete at End
+6. Delete at Position
+7. Is Empty
+8. Is Full
+9. Display
+10. Search
+0. Exit
+Enter your choice: 5
+
+1. Insert at Begin
+2. Insert at Position
+3. Insert at End
+4. Delete at Begin
+5. Delete at End
+6. Delete at Position
+7. Is Empty
+8. Is Full
+9. Display
+10. Search
+0. Exit
+Enter your choice: 6
+Enter position: 2
+
+1. Insert at Begin
+2. Insert at Position
+3. Insert at End
+4. Delete at Begin
+5. Delete at End
+6. Delete at Position
+7. Is Empty
+8. Is Full
+9. Display
+10. Search
+0. Exit
+Enter your choice: 9
+7 -&gt; (back to head)
+
+1. Insert at Begin
+2. Insert at Position
+3. Insert at End
+4. Delete at Begin
+5. Delete at End
+6. Delete at Position
+7. Is Empty
+8. Is Full
+9. Display
+10. Search
+0. Exit
+Enter your choice: 7
+List is not empty
+
+1. Insert at Begin
+2. Insert at Position
+3. Insert at End
+4. Delete at Begin
+5. Delete at End
+6. Delete at Position
+7. Is Empty
+8. Is Full
+9. Display
+10. Search
+0. Exit
+Enter your choice: 8
+List is not full
+
+1. Insert at Begin
+2. Insert at Position
+3. Insert at End
+4. Delete at Begin
+5. Delete at End
+6. Delete at Position
+7. Is Empty
+8. Is Full
+9. Display
+10. Search
+0. Exit
+Enter your choice: 0
+Program ended</pre>
+<p class="links"><a href="q1.html">&larr; Previous</a> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; <a href="q3.html">Next &rarr;</a></p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>

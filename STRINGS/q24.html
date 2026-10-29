@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q24 - Strings</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Strings</b></a></p>
+<h1>Q24. Enter a sentence from user and then enter the word and replace that word by another word.</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main()
+{
+    char sentence[200], word[50], replace[50];
+    char result[300];
+    int i, j, k = 0, found;
+
+    printf(&quot;Enter a sentence: &quot;);
+    fgets(sentence, sizeof(sentence), stdin);
+
+    printf(&quot;Enter the word to replace: &quot;);
+    scanf(&quot;%49s&quot;, word);
+
+    printf(&quot;Enter the new word: &quot;);
+    scanf(&quot;%49s&quot;, replace);
+
+    for(i = 0; sentence[i] != &#x27;\0&#x27;; i++)
+    {
+        found = 1;
+
+        for(j = 0; word[j] != &#x27;\0&#x27;; j++)
+        {
+            if(sentence[i + j] != word[j])
+            {
+                found = 0;
+                break;
+            }
+        }
+
+        if(found == 1 &amp;&amp; word[j] == &#x27;\0&#x27;)
+        {
+            for(j = 0; replace[j] != &#x27;\0&#x27;; j++)
+                result[k++] = replace[j];
+
+            i = i + strlen(word) - 1;
+        }
+        else
+        {
+            result[k++] = sentence[i];
+        }
+    }
+
+    result[k] = &#x27;\0&#x27;;
+
+    printf(&quot;New sentence: %s&quot;, result);
+
+    return 0;
+}</pre>
+<h2>Output</h2>
+<pre class="out">Enter a sentence: I like apple and apple
+Enter the word to replace: apple
+Enter the new word: mango
+New sentence: I like mango and mango</pre>
+<p class="links"><a href="q23.html">&larr; Previous</a> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; <a href="q25.html">Next &rarr;</a></p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>

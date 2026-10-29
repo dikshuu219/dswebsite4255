@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q3 - Multi Dimension Arrays</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Multi Dimension Arrays</b></a></p>
+<h1>Q3. Enter two Matrices from user, subtract the matrices and display the answer?</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+
+int main()
+{
+    int a[4][2], b[4][2], c[4][2];
+    int i, j;
+
+    printf(&quot;Enter first matrix:\n&quot;);
+    for(i = 0; i &lt; 4; i++)
+    {
+        for(j = 0; j &lt; 2; j++)
+            scanf(&quot;%d&quot;, &amp;a[i][j]);
+    }
+
+    printf(&quot;Enter second matrix:\n&quot;);
+    for(i = 0; i &lt; 4; i++)
+    {
+        for(j = 0; j &lt; 2; j++)
+            scanf(&quot;%d&quot;, &amp;b[i][j]);
+    }
+
+    for(i = 0; i &lt; 4; i++)
+    {
+        for(j = 0; j &lt; 2; j++)
+            c[i][j] = a[i][j] - b[i][j];
+    }
+
+    printf(&quot;Subtraction of matrices:\n&quot;);
+    for(i = 0; i &lt; 4; i++)
+    {
+        for(j = 0; j &lt; 2; j++)
+            printf(&quot;%d &quot;, c[i][j]);
+
+        printf(&quot;\n&quot;);
+    }
+
+    return 0;
+}</pre>
+<h2>Output</h2>
+<pre class="out">Enter first matrix:
+9
+8
+7
+6
+5
+4
+3
+2
+Enter second matrix:
+1
+1
+1
+1
+1
+1
+1
+1
+Subtraction of matrices:
+8 7 
+6 5 
+4 3 
+2 1 </pre>
+<p class="links"><a href="q2.html">&larr; Previous</a> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; <a href="q4.html">Next &rarr;</a></p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>

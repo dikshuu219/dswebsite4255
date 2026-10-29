@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q28 - Strings</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Strings</b></a></p>
+<h1>Q28. Create a dictionary having 10 words and their meaning with following operations. [create, delete, search].</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main()
+{
+    char word[10][20] = {
+        &quot;Apple&quot;, &quot;Book&quot;, &quot;Cat&quot;, &quot;Dog&quot;, &quot;Easy&quot;,
+        &quot;Friend&quot;, &quot;Happy&quot;, &quot;Kind&quot;, &quot;Love&quot;, &quot;School&quot;
+    };
+
+    char meaning[10][50] = {
+        &quot;A fruit&quot;, &quot;Something to read&quot;, &quot;An animal&quot;,
+        &quot;A pet animal&quot;, &quot;Not difficult&quot;, &quot;A person we like&quot;,
+        &quot;Feeling of joy&quot;, &quot;Being helpful&quot;, &quot;A strong feeling&quot;,
+        &quot;A place to study&quot;
+    };
+
+    char search[20];
+    int i, choice, found;
+
+    printf(&quot;1. Create Dictionary\n&quot;);
+    printf(&quot;2. Search Word\n&quot;);
+    printf(&quot;3. Delete Word\n&quot;);
+    printf(&quot;Enter your choice: &quot;);
+    scanf(&quot;%d&quot;, &amp;choice);
+
+    if(choice == 1)
+    {
+        printf(&quot;Dictionary created successfully.\n&quot;);
+
+        for(i = 0; i &lt; 10; i++)
+            printf(&quot;%s - %s\n&quot;, word[i], meaning[i]);
+    }
+    else if(choice == 2 || choice == 3)
+    {
+        printf(&quot;Enter word: &quot;);
+        scanf(&quot;%19s&quot;, search);
+
+        found = 0;
+
+        for(i = 0; i &lt; 10; i++)
+        {
+            if(strcmp(word[i], search) == 0)
+            {
+                found = 1;
+
+                if(choice == 2)
+                    printf(&quot;Meaning: %s\n&quot;, meaning[i]);
+                else
+                {
+                    strcpy(word[i], &quot;&quot;);
+                    strcpy(meaning[i], &quot;&quot;);
+                    printf(&quot;Word deleted successfully.\n&quot;);
+                }
+
+                break;
+            }
+        }
+
+        if(found == 0)
+            printf(&quot;Word not found.\n&quot;);
+    }
+    else
+        printf(&quot;Invalid choice.&quot;);
+
+    return 0;
+}</pre>
+<h2>Output</h2>
+<pre class="out">1. Create Dictionary
+2. Search Word
+3. Delete Word
+Enter your choice: 1
+Dictionary created successfully.
+Apple - A fruit
+Book - Something to read
+Cat - An animal
+Dog - A pet animal
+Easy - Not difficult
+Friend - A person we like
+Happy - Feeling of joy
+Kind - Being helpful
+Love - A strong feeling
+School - A place to study</pre>
+<p class="links"><a href="q27.html">&larr; Previous</a> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; <a href="q29.html">Next &rarr;</a></p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>

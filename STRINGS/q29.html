@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q29 - Strings</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Strings</b></a></p>
+<h1>Q29. Enter the string from user and convert characters into their ASCII values in the integer array. [for example take 10 characters]</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+
+int main()
+{
+    char str[11];
+    int arr[10], i;
+
+    printf(&quot;Enter 10 characters: &quot;);
+    scanf(&quot;%10s&quot;, str);
+
+    for(i = 0; i &lt; 10; i++)
+    {
+        arr[i] = str[i];
+    }
+
+    printf(&quot;ASCII values are:\n&quot;);
+
+    for(i = 0; i &lt; 10; i++)
+    {
+        printf(&quot;%d &quot;, arr[i]);
+    }
+
+    return 0;
+}</pre>
+<h2>Output</h2>
+<pre class="out">Enter 10 characters: abcdefghij
+ASCII values are:
+97 98 99 100 101 102 103 104 105 106 </pre>
+<p class="links"><a href="q28.html">&larr; Previous</a> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; </p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>

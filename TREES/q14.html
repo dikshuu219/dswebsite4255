@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q14 - Trees</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Trees</b></a></p>
+<h1>Q14. Print preorder traversal to postorder traversal of binary search tree</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+
+int main()
+{
+    int a[100], n, i;
+
+    printf(&quot;Enter number of nodes: &quot;);
+    scanf(&quot;%d&quot;, &amp;n);
+
+    printf(&quot;Enter preorder elements: &quot;);
+    for (i = 0; i &lt; n; i++)
+        scanf(&quot;%d&quot;, &amp;a[i]);
+
+    printf(&quot;Postorder traversal: &quot;);
+
+    for (i = n - 1; i &gt;= 0; i--)
+        printf(&quot;%d &quot;, a[i]);
+
+    return 0;
+}</pre>
+<h2>Output</h2>
+<pre class="out">Enter number of nodes: 7
+Enter preorder elements: 50
+30
+20
+40
+70
+60
+80
+Postorder traversal: 80 60 70 40 20 30 50 </pre>
+<p class="links"><a href="q13.html">&larr; Previous</a> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; <a href="q15.html">Next &rarr;</a></p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>

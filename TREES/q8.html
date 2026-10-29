@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q8 - Trees</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Trees</b></a></p>
+<h1>Q8. Create binary search tree dynamically (insert, delete, search, preorder, inorder, postorder, minimum element)</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+struct node
+{
+    int data;
+    struct node *left, *right;
+};
+
+struct node *insert(struct node *root, int x)
+{
+    struct node *p;
+
+    if (root == NULL)
+    {
+        p = (struct node *)malloc(sizeof(struct node));
+        p-&gt;data = x;
+        p-&gt;left = NULL;
+        p-&gt;right = NULL;
+        return p;
+    }
+
+    if (x &lt; root-&gt;data)
+        root-&gt;left = insert(root-&gt;left, x);
+    else if (x &gt; root-&gt;data)
+        root-&gt;right = insert(root-&gt;right, x);
+
+    return root;
+}
+
+void search(struct node *root, int x)
+{
+    if (root == NULL)
+        printf(&quot;Not found\n&quot;);
+    else if (root-&gt;data == x)
+        printf(&quot;Found\n&quot;);
+    else if (x &lt; root-&gt;data)
+        search(root-&gt;left, x);
+    else
+        search(root-&gt;right, x);
+}
+
+struct node *minimum(struct node *root)
+{
+    while (root != NULL &amp;&amp; root-&gt;left != NULL)
+        root = root-&gt;left;
+
+    return root;
+}
+
+struct node *deleteNode(struct node *root, int x)
+{
+    struct node *p;
+
+    if (root == NULL)
+        return NULL;
+
+    if (x &lt; root-&gt;data)
+        root-&gt;left = deleteNode(root-&gt;left, x);
+    else if (x &gt; root-&gt;data)
+        root-&gt;right = deleteNode(root-&gt;right, x);
+    else
+    {
+        if (root-&gt;left == NULL)
+            return root-&gt;right;
+
+        if (root-&gt;right == NULL)
+            return root-&gt;left;
+
+        p = minimum(root-&gt;right);
+        root-&gt;data = p-&gt;data;
+        root-&gt;right = deleteNode(root-&gt;right, p-&gt;data);
+    }
+
+    return root;
+}
+
+void preorder(struct node *root)
+{
+    if (root != NULL)
+    {
+        printf(&quot;%d &quot;, root-&gt;data);
+        preorder(root-&gt;left);
+        preorder(root-&gt;right);
+    }
+}
+
+void inorder(struct node *root)
+{
+    if (root != NULL)
+    {
+        inorder(root-&gt;left);
+        printf(&quot;%d &quot;, root-&gt;data);
+        inorder(root-&gt;right);
+    }
+}
+
+void postorder(struct node *root)
+{
+    if (root != NULL)
+    {
+        postorder(root-&gt;left);
+        postorder(root-&gt;right);
+        printf(&quot;%d &quot;, root-&gt;data);
+    }
+}
+
+int main()
+{
+    struct node *root = NULL, *p;
+    int ch, x;
+
+    do
+    {
+        printf(&quot;\n1.Insert  2.Delete  3.Search\n&quot;);
+        printf(&quot;4.Preorder  5.Inorder  6.Postorder\n&quot;);
+        printf(&quot;7.Minimum  8.Exit\n&quot;);
+        printf(&quot;Enter choice: &quot;);
+        scanf(&quot;%d&quot;, &amp;ch);
+
+        switch (ch)
+        {
+            case 1:
+                printf(&quot;Enter value: &quot;);
+                scanf(&quot;%d&quot;, &amp;x);
+                root = insert(root, x);
+                break;
+
+            case 2:
+                printf(&quot;Enter value to delete: &quot;);
+                scanf(&quot;%d&quot;, &amp;x);
+                root = deleteNode(root, x);
+                break;
+
+            case 3:
+                printf(&quot;Enter value to search: &quot;);
+                scanf(&quot;%d&quot;, &amp;x);
+                search(root, x);
+                break;
+
+            case 4:
+                preorder(root);
+                printf(&quot;\n&quot;);
+                break;
+
+            case 5:
+                inorder(root);
+                printf(&quot;\n&quot;);
+                break;
+
+            case 6:
+                postorder(root);
+                printf(&quot;\n&quot;);
+                break;
+
+            case 7:
+                p = minimum(root);
+
+                if (p == NULL)
+                    printf(&quot;Tree is empty\n&quot;);
+                else
+                    printf(&quot;Minimum: %d\n&quot;, p-&gt;data);
+                break;
+
+            case 8:
+                printf(&quot;Exit\n&quot;);
+                break;
+
+            default:
+                printf(&quot;Wrong choice\n&quot;);
+        }
+
+    } while (ch != 8);
+
+    return 0;
+}</pre>
+<h2>Output</h2>
+<pre class="out">1.Insert  2.Delete  3.Search
+4.Preorder  5.Inorder  6.Postorder
+7.Minimum  8.Exit
+Enter choice: 1
+Enter value: 50
+
+1.Insert  2.Delete  3.Search
+4.Preorder  5.Inorder  6.Postorder
+7.Minimum  8.Exit
+Enter choice: 1
+Enter value: 30
+
+1.Insert  2.Delete  3.Search
+4.Preorder  5.Inorder  6.Postorder
+7.Minimum  8.Exit
+Enter choice: 1
+Enter value: 70
+
+1.Insert  2.Delete  3.Search
+4.Preorder  5.Inorder  6.Postorder
+7.Minimum  8.Exit
+Enter choice: 1
+Enter value: 20
+
+1.Insert  2.Delete  3.Search
+4.Preorder  5.Inorder  6.Postorder
+7.Minimum  8.Exit
+Enter choice: 1
+Enter value: 40
+
+1.Insert  2.Delete  3.Search
+4.Preorder  5.Inorder  6.Postorder
+7.Minimum  8.Exit
+Enter choice: 1
+Enter value: 60
+
+1.Insert  2.Delete  3.Search
+4.Preorder  5.Inorder  6.Postorder
+7.Minimum  8.Exit
+Enter choice: 1
+Enter value: 80
+
+1.Insert  2.Delete  3.Search
+4.Preorder  5.Inorder  6.Postorder
+7.Minimum  8.Exit
+Enter choice: 4
+50 30 20 40 70 60 80 
+
+1.Insert  2.Delete  3.Search
+4.Preorder  5.Inorder  6.Postorder
+7.Minimum  8.Exit
+Enter choice: 5
+20 30 40 50 60 70 80 
+
+1.Insert  2.Delete  3.Search
+4.Preorder  5.Inorder  6.Postorder
+7.Minimum  8.Exit
+Enter choice: 6
+20 40 30 60 80 70 50 
+
+1.Insert  2.Delete  3.Search
+4.Preorder  5.Inorder  6.Postorder
+7.Minimum  8.Exit
+Enter choice: 3
+Enter value to search: 40
+Found
+
+1.Insert  2.Delete  3.Search
+4.Preorder  5.Inorder  6.Postorder
+7.Minimum  8.Exit
+Enter choice: 7
+Minimum: 20
+
+1.Insert  2.Delete  3.Search
+4.Preorder  5.Inorder  6.Postorder
+7.Minimum  8.Exit
+Enter choice: 2
+Enter value to delete: 30
+
+1.Insert  2.Delete  3.Search
+4.Preorder  5.Inorder  6.Postorder
+7.Minimum  8.Exit
+Enter choice: 5
+20 40 50 60 70 80 
+
+1.Insert  2.Delete  3.Search
+4.Preorder  5.Inorder  6.Postorder
+7.Minimum  8.Exit
+Enter choice: 8
+Exit</pre>
+<p class="links"><a href="q7.html">&larr; Previous</a> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; <a href="q9.html">Next &rarr;</a></p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>

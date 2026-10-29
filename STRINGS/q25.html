@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q25 - Strings</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Strings</b></a></p>
+<h1>Q25. Enter the string from the user and trim/ eliminate the spaces from both ends (if any).</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main()
+{
+    char str[100];
+    int i, start = 0, end;
+
+    printf(&quot;Enter a string: &quot;);
+    scanf(&quot; %[^\n]&quot;, str);
+
+    end = strlen(str) - 1;
+
+    while(str[start] == &#x27; &#x27;)
+        start++;
+
+    while(end &gt;= start &amp;&amp; str[end] == &#x27; &#x27;)
+        end--;
+
+    printf(&quot;String after trimming: &quot;);
+
+    for(i = start; i &lt;= end; i++)
+        printf(&quot;%c&quot;, str[i]);
+
+    return 0;
+}</pre>
+<h2>Output</h2>
+<pre class="out">Enter a string:    hello world   
+String after trimming: hello world</pre>
+<p class="links"><a href="q24.html">&larr; Previous</a> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; <a href="q26.html">Next &rarr;</a></p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q1 - Graphs</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Graphs</b></a></p>
+<h1>Q1. Enter the vertices and edges and represent in adjacency matrix and print it.</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+
+int main()
+{
+    int a[10][10], v, e, i, j, x, y;
+
+    printf(&quot;Enter number of vertices: &quot;);
+    scanf(&quot;%d&quot;, &amp;v);
+
+    printf(&quot;Enter number of edges: &quot;);
+    scanf(&quot;%d&quot;, &amp;e);
+
+    for (i = 0; i &lt; v; i++)
+        for (j = 0; j &lt; v; j++)
+            a[i][j] = 0;
+
+    for (i = 0; i &lt; e; i++)
+    {
+        printf(&quot;Enter edge (two vertices): &quot;);
+        scanf(&quot;%d %d&quot;, &amp;x, &amp;y);
+
+        a[x][y] = 1;
+        a[y][x] = 1;
+    }
+
+    printf(&quot;Adjacency Matrix:\n&quot;);
+
+    for (i = 0; i &lt; v; i++)
+    {
+        for (j = 0; j &lt; v; j++)
+            printf(&quot;%d &quot;, a[i][j]);
+
+        printf(&quot;\n&quot;);
+    }
+
+    return 0;
+}</pre>
+<h2>Output</h2>
+<pre class="out">Enter number of vertices: 4
+Enter number of edges: 4
+Enter edge (two vertices): 0 1
+Enter edge (two vertices): 0 2
+Enter edge (two vertices): 1 2
+Enter edge (two vertices): 2 3
+Adjacency Matrix:
+0 1 1 0 
+1 0 1 0 
+1 1 0 1 
+0 0 1 0 </pre>
+<p class="links"> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; <a href="q2.html">Next &rarr;</a></p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>

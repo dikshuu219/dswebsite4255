@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q11 - Trees</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Trees</b></a></p>
+<h1>Q11. Create binary tree to binary search tree through array.</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+struct node
+{
+    int data;
+    struct node *left, *right;
+};
+
+struct node *createTree()
+{
+    struct node *p;
+    int x;
+
+    printf(&quot;Enter value (-1 for no node): &quot;);
+    scanf(&quot;%d&quot;, &amp;x);
+
+    if (x == -1)
+        return NULL;
+
+    p = (struct node *)malloc(sizeof(struct node));
+    p-&gt;data = x;
+
+    printf(&quot;Enter left child of %d\n&quot;, x);
+    p-&gt;left = createTree();
+
+    printf(&quot;Enter right child of %d\n&quot;, x);
+    p-&gt;right = createTree();
+
+    return p;
+}
+
+void store(struct node *root, int a[], int *n)
+{
+    if (root != NULL)
+    {
+        store(root-&gt;left, a, n);
+        a[*n] = root-&gt;data;
+        (*n)++;
+        store(root-&gt;right, a, n);
+    }
+}
+
+void sort(int a[], int n)
+{
+    int i, j, temp;
+
+    for (i = 0; i &lt; n - 1; i++)
+    {
+        for (j = 0; j &lt; n - i - 1; j++)
+        {
+            if (a[j] &gt; a[j + 1])
+            {
+                temp = a[j];
+                a[j] = a[j + 1];
+                a[j + 1] = temp;
+            }
+        }
+    }
+}
+
+void putValues(struct node *root, int a[], int *i)
+{
+    if (root != NULL)
+    {
+        putValues(root-&gt;left, a, i);
+        root-&gt;data = a[*i];
+        (*i)++;
+        putValues(root-&gt;right, a, i);
+    }
+}
+
+void inorder(struct node *root)
+{
+    if (root != NULL)
+    {
+        inorder(root-&gt;left);
+        printf(&quot;%d &quot;, root-&gt;data);
+        inorder(root-&gt;right);
+    }
+}
+
+int main()
+{
+    struct node *root;
+    int a[100], n = 0, i = 0;
+
+    printf(&quot;Create Binary Tree:\n&quot;);
+    root = createTree();
+
+    store(root, a, &amp;n);
+    sort(a, n);
+    putValues(root, a, &amp;i);
+
+    printf(&quot;\nBinary Search Tree (Inorder): &quot;);
+    inorder(root);
+
+    return 0;
+}</pre>
+<h2>Output</h2>
+<pre class="out">Create Binary Tree:
+Enter value (-1 for no node): 1
+Enter left child of 1
+Enter value (-1 for no node): 2
+Enter left child of 2
+Enter value (-1 for no node): 4
+Enter left child of 4
+Enter value (-1 for no node): -1
+Enter right child of 4
+Enter value (-1 for no node): -1
+Enter right child of 2
+Enter value (-1 for no node): 5
+Enter left child of 5
+Enter value (-1 for no node): -1
+Enter right child of 5
+Enter value (-1 for no node): -1
+Enter right child of 1
+Enter value (-1 for no node): 3
+Enter left child of 3
+Enter value (-1 for no node): -1
+Enter right child of 3
+Enter value (-1 for no node): -1
+
+Binary Search Tree (Inorder): 1 2 3 4 5 </pre>
+<p class="links"><a href="q10.html">&larr; Previous</a> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; <a href="q12.html">Next &rarr;</a></p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>

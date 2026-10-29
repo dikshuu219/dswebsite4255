@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q6 - Trees</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Trees</b></a></p>
+<h1>Q6. Find the maximum depth of binary tree</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+struct node
+{
+    int data;
+    struct node *left, *right;
+};
+
+struct node *create()
+{
+    int x;
+    struct node *p;
+
+    printf(&quot;Enter data (-1 for no node): &quot;);
+    scanf(&quot;%d&quot;, &amp;x);
+
+    if (x == -1)
+        return NULL;
+
+    p = (struct node *)malloc(sizeof(struct node));
+    p-&gt;data = x;
+
+    printf(&quot;Left child of %d:\n&quot;, x);
+    p-&gt;left = create();
+
+    printf(&quot;Right child of %d:\n&quot;, x);
+    p-&gt;right = create();
+
+    return p;
+}
+
+int depth(struct node *root)
+{
+    int left, right;
+
+    if (root == NULL)
+        return 0;
+
+    left = depth(root-&gt;left);
+    right = depth(root-&gt;right);
+
+    if (left &gt; right)
+        return left + 1;
+    else
+        return right + 1;
+}
+
+int main()
+{
+    struct node *root;
+
+    printf(&quot;Create binary tree:\n&quot;);
+    root = create();
+
+    printf(&quot;Maximum depth: %d&quot;, depth(root));
+
+    return 0;
+}</pre>
+<h2>Output</h2>
+<pre class="out">Create binary tree:
+Enter data (-1 for no node): 1
+Left child of 1:
+Enter data (-1 for no node): 2
+Left child of 2:
+Enter data (-1 for no node): 4
+Left child of 4:
+Enter data (-1 for no node): -1
+Right child of 4:
+Enter data (-1 for no node): -1
+Right child of 2:
+Enter data (-1 for no node): 5
+Left child of 5:
+Enter data (-1 for no node): -1
+Right child of 5:
+Enter data (-1 for no node): -1
+Right child of 1:
+Enter data (-1 for no node): 3
+Left child of 3:
+Enter data (-1 for no node): -1
+Right child of 3:
+Enter data (-1 for no node): -1
+Maximum depth: 3</pre>
+<p class="links"><a href="q5.html">&larr; Previous</a> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; <a href="q7.html">Next &rarr;</a></p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>

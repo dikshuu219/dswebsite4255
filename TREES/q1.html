@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q1 - Trees</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Trees</b></a></p>
+<h1>Q1. Construct binary tree from preorder and inorder traversal</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+struct node
+{
+    char data;
+    struct node *left;
+    struct node *right;
+};
+
+int index = 0;
+
+struct node *create(char value)
+{
+    struct node *p;
+
+    p = (struct node *)malloc(sizeof(struct node));
+
+    p-&gt;data = value;
+    p-&gt;left = NULL;
+    p-&gt;right = NULL;
+
+    return p;
+}
+
+int find(char inorder[], char value, int n)
+{
+    int i;
+
+    for (i = 0; i &lt; n; i++)
+    {
+        if (inorder[i] == value)
+            return i;
+    }
+
+    return -1;
+}
+
+struct node *build(char preorder[], char inorder[], int n)
+{
+    struct node *root;
+    int pos;
+
+    if (n &lt;= 0)
+        return NULL;
+
+    root = create(preorder[index]);
+    index++;
+
+    pos = find(inorder, root-&gt;data, n);
+
+    root-&gt;left = build(preorder, inorder, pos);
+    root-&gt;right = build(preorder + index, inorder + pos + 1, n - pos - 1);
+
+    return root;
+}
+
+void display(struct node *root)
+{
+    if (root != NULL)
+    {
+        display(root-&gt;left);
+        printf(&quot;%c &quot;, root-&gt;data);
+        display(root-&gt;right);
+    }
+}
+
+int main()
+{
+    char preorder[20], inorder[20];
+    struct node *root;
+    int n;
+
+    printf(&quot;Enter number of nodes: &quot;);
+    scanf(&quot;%d&quot;, &amp;n);
+
+    printf(&quot;Enter preorder: &quot;);
+    scanf(&quot;%19s&quot;, preorder);
+
+    printf(&quot;Enter inorder: &quot;);
+    scanf(&quot;%19s&quot;, inorder);
+
+    index = 0;
+    root = build(preorder, inorder, n);
+
+    printf(&quot;Constructed tree inorder: &quot;);
+    display(root);
+
+    return 0;
+}</pre>
+<h2>Output</h2>
+<pre class="out">Enter number of nodes: 3
+Enter preorder: ABC
+Enter inorder: CBA
+Constructed tree inorder: C B A </pre>
+<p class="links"> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; <a href="q2.html">Next &rarr;</a></p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>

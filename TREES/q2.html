@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q2 - Trees</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Trees</b></a></p>
+<h1>Q2. Binary tree level order traversal</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+struct node
+{
+    int data;
+    struct node *left;
+    struct node *right;
+};
+
+struct node *create(int value)
+{
+    struct node *p;
+
+    p = (struct node *)malloc(sizeof(struct node));
+    p-&gt;data = value;
+    p-&gt;left = NULL;
+    p-&gt;right = NULL;
+
+    return p;
+}
+
+void levelOrder(struct node *root)
+{
+    struct node *queue[100];
+    int front = 0, rear = 0;
+
+    if (root == NULL)
+        return;
+
+    queue[rear++] = root;
+
+    while (front &lt; rear)
+    {
+        struct node *p = queue[front++];
+
+        printf(&quot;%d &quot;, p-&gt;data);
+
+        if (p-&gt;left != NULL)
+            queue[rear++] = p-&gt;left;
+
+        if (p-&gt;right != NULL)
+            queue[rear++] = p-&gt;right;
+    }
+}
+
+int main()
+{
+    struct node *root;
+
+    root = create(1);
+    root-&gt;left = create(2);
+    root-&gt;right = create(3);
+    root-&gt;left-&gt;left = create(4);
+    root-&gt;left-&gt;right = create(5);
+
+    printf(&quot;Level Order Traversal: &quot;);
+    levelOrder(root);
+
+    return 0;
+}</pre>
+<h2>Output</h2>
+<pre class="out">Level Order Traversal: 1 2 3 4 5 </pre>
+<p class="links"><a href="q1.html">&larr; Previous</a> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; <a href="q3.html">Next &rarr;</a></p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q10 - Trees</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Trees</b></a></p>
+<h1>Q10. Check whether binary search tree contains dead end</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+struct node
+{
+    int data;
+    struct node *left, *right;
+};
+
+struct node *insert(struct node *root, int x)
+{
+    struct node *p;
+
+    if (root == NULL)
+    {
+        p = (struct node *)malloc(sizeof(struct node));
+        p-&gt;data = x;
+        p-&gt;left = NULL;
+        p-&gt;right = NULL;
+        return p;
+    }
+
+    if (x &lt; root-&gt;data)
+        root-&gt;left = insert(root-&gt;left, x);
+    else if (x &gt; root-&gt;data)
+        root-&gt;right = insert(root-&gt;right, x);
+
+    return root;
+}
+
+int checkDeadEnd(struct node *root, int min, int max)
+{
+    if (root == NULL)
+        return 0;
+
+    if (min == max)
+        return 1;
+
+    return checkDeadEnd(root-&gt;left, min, root-&gt;data - 1) ||
+           checkDeadEnd(root-&gt;right, root-&gt;data + 1, max);
+}
+
+int main()
+{
+    struct node *root = NULL;
+    int n, i, x;
+
+    printf(&quot;Enter number of nodes: &quot;);
+    scanf(&quot;%d&quot;, &amp;n);
+
+    for (i = 0; i &lt; n; i++)
+    {
+        printf(&quot;Enter value: &quot;);
+        scanf(&quot;%d&quot;, &amp;x);
+        root = insert(root, x);
+    }
+
+    if (checkDeadEnd(root, 1, 100000))
+        printf(&quot;BST contains a Dead End\n&quot;);
+    else
+        printf(&quot;BST does not contain a Dead End\n&quot;);
+
+    return 0;
+}</pre>
+<h2>Output</h2>
+<pre class="out">Enter number of nodes: 6
+Enter value: 8
+Enter value: 5
+Enter value: 9
+Enter value: 2
+Enter value: 7
+Enter value: 1
+BST contains a Dead End</pre>
+<p class="links"><a href="q9.html">&larr; Previous</a> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; <a href="q11.html">Next &rarr;</a></p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>

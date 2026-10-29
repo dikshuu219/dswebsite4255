@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q18 - Strings</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Strings</b></a></p>
+<h1>Q18. Enter the string from the user and convert into an integer value?</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+
+int main()
+{
+    char str[100];
+    int i, num = 0, sign = 1;
+
+    printf(&quot;Enter a numeric string: &quot;);
+    scanf(&quot;%99s&quot;, str);
+
+    i = 0;
+
+    if(str[i] == &#x27;-&#x27;)
+    {
+        sign = -1;
+        i++;
+    }
+
+    for(; str[i] != &#x27;\0&#x27;; i++)
+    {
+        if(str[i] &gt;= &#x27;0&#x27; &amp;&amp; str[i] &lt;= &#x27;9&#x27;)
+        {
+            num = num * 10 + (str[i] - &#x27;0&#x27;);
+        }
+        else
+        {
+            printf(&quot;Invalid input&quot;);
+            return 0;
+        }
+    }
+
+    num = num * sign;
+
+    printf(&quot;Integer value = %d&quot;, num);
+
+    return 0;
+}</pre>
+<h2>Output</h2>
+<pre class="out">Enter a numeric string: 12345
+Integer value = 12345</pre>
+<p class="links"><a href="q17.html">&larr; Previous</a> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; <a href="q19.html">Next &rarr;</a></p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>

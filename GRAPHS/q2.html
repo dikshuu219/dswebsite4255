@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q2 - Graphs</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Graphs</b></a></p>
+<h1>Q2. Create the graph as a adjacency list with operations such as insertion, deletion</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+struct node
+{
+    int vertex;
+    struct node *next;
+};
+
+struct node *a[10];
+
+void insert(int x, int y)
+{
+    struct node *p;
+
+    p = (struct node *)malloc(sizeof(struct node));
+    p-&gt;vertex = y;
+    p-&gt;next = a[x];
+    a[x] = p;
+
+    p = (struct node *)malloc(sizeof(struct node));
+    p-&gt;vertex = x;
+    p-&gt;next = a[y];
+    a[y] = p;
+}
+
+void deleteEdge(int x, int y)
+{
+    struct node *p, *q;
+
+    p = a[x];
+    q = NULL;
+
+    while (p != NULL)
+    {
+        if (p-&gt;vertex == y)
+        {
+            if (q == NULL)
+                a[x] = p-&gt;next;
+            else
+                q-&gt;next = p-&gt;next;
+
+            free(p);
+            break;
+        }
+
+        q = p;
+        p = p-&gt;next;
+    }
+
+    p = a[y];
+    q = NULL;
+
+    while (p != NULL)
+    {
+        if (p-&gt;vertex == x)
+        {
+            if (q == NULL)
+                a[y] = p-&gt;next;
+            else
+                q-&gt;next = p-&gt;next;
+
+            free(p);
+            break;
+        }
+
+        q = p;
+        p = p-&gt;next;
+    }
+}
+
+void display(int n)
+{
+    int i;
+    struct node *p;
+
+    for (i = 0; i &lt; n; i++)
+    {
+        printf(&quot;%d: &quot;, i);
+        p = a[i];
+
+        while (p != NULL)
+        {
+            printf(&quot;%d -&gt; &quot;, p-&gt;vertex);
+            p = p-&gt;next;
+        }
+
+        printf(&quot;NULL\n&quot;);
+    }
+}
+
+int main()
+{
+    int n, ch, x, y, i;
+
+    printf(&quot;Enter number of vertices: &quot;);
+    scanf(&quot;%d&quot;, &amp;n);
+
+    for (i = 0; i &lt; n; i++)
+        a[i] = NULL;
+
+    do
+    {
+        printf(&quot;\n1. Insert Edge&quot;);
+        printf(&quot;\n2. Delete Edge&quot;);
+        printf(&quot;\n3. Display Graph&quot;);
+        printf(&quot;\n4. Exit&quot;);
+        printf(&quot;\nEnter choice: &quot;);
+        scanf(&quot;%d&quot;, &amp;ch);
+
+        if (ch == 1 || ch == 2)
+        {
+            printf(&quot;Enter two vertices: &quot;);
+            scanf(&quot;%d %d&quot;, &amp;x, &amp;y);
+
+            if (x &lt; 0 || x &gt;= n || y &lt; 0 || y &gt;= n || x == y)
+                printf(&quot;Invalid vertices\n&quot;);
+            else if (ch == 1)
+                insert(x, y);
+            else
+                deleteEdge(x, y);
+        }
+        else if (ch == 3)
+            display(n);
+        else if (ch != 4)
+            printf(&quot;Wrong choice\n&quot;);
+
+    } while (ch != 4);
+
+    return 0;
+}</pre>
+<h2>Output</h2>
+<pre class="out">Enter number of vertices: 4
+
+1. Insert Edge
+2. Delete Edge
+3. Display Graph
+4. Exit
+Enter choice: 1
+Enter two vertices: 0 1
+
+1. Insert Edge
+2. Delete Edge
+3. Display Graph
+4. Exit
+Enter choice: 1
+Enter two vertices: 0 2
+
+1. Insert Edge
+2. Delete Edge
+3. Display Graph
+4. Exit
+Enter choice: 1
+Enter two vertices: 1 2
+
+1. Insert Edge
+2. Delete Edge
+3. Display Graph
+4. Exit
+Enter choice: 3
+0: 2 -&gt; 1 -&gt; NULL
+1: 2 -&gt; 0 -&gt; NULL
+2: 1 -&gt; 0 -&gt; NULL
+3: NULL
+
+1. Insert Edge
+2. Delete Edge
+3. Display Graph
+4. Exit
+Enter choice: 2
+Enter two vertices: 0 1
+
+1. Insert Edge
+2. Delete Edge
+3. Display Graph
+4. Exit
+Enter choice: 3
+0: 2 -&gt; NULL
+1: 2 -&gt; NULL
+2: 1 -&gt; 0 -&gt; NULL
+3: NULL
+
+1. Insert Edge
+2. Delete Edge
+3. Display Graph
+4. Exit
+Enter choice: 4</pre>
+<p class="links"><a href="q1.html">&larr; Previous</a> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; <a href="q3.html">Next &rarr;</a></p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>

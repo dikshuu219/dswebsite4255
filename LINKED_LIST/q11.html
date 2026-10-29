@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q11 - Linked List</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Linked List</b></a></p>
+<h1>Q11. Enter the 2 polynomial equations dynamically, multiply them and display the answer.</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+struct node
+{
+    int coeff;
+    int pow;
+    struct node *next;
+};
+
+struct node *create()
+{
+    struct node *head = NULL, *p, *q;
+    int n, i;
+
+    printf(&quot;Enter number of terms: &quot;);
+    scanf(&quot;%d&quot;, &amp;n);
+
+    for (i = 0; i &lt; n; i++)
+    {
+        p = (struct node *)malloc(sizeof(struct node));
+
+        printf(&quot;Enter coefficient and power: &quot;);
+        scanf(&quot;%d%d&quot;, &amp;p-&gt;coeff, &amp;p-&gt;pow);
+
+        p-&gt;next = NULL;
+
+        if (head == NULL)
+            head = p;
+        else
+            q-&gt;next = p;
+
+        q = p;
+    }
+
+    return head;
+}
+
+struct node *insert(struct node *head, int c, int power)
+{
+    struct node *p, *q;
+
+    if (c == 0)
+        return head;
+
+    p = head;
+
+    while (p != NULL)
+    {
+        if (p-&gt;pow == power)
+        {
+            p-&gt;coeff = p-&gt;coeff + c;
+            return head;
+        }
+
+        p = p-&gt;next;
+    }
+
+    p = (struct node *)malloc(sizeof(struct node));
+    p-&gt;coeff = c;
+    p-&gt;pow = power;
+    p-&gt;next = NULL;
+
+    if (head == NULL)
+        return p;
+
+    q = head;
+
+    while (q-&gt;next != NULL)
+        q = q-&gt;next;
+
+    q-&gt;next = p;
+
+    return head;
+}
+
+struct node *multiply(struct node *p, struct node *q)
+{
+    struct node *head = NULL, *a, *b;
+    int c, power;
+
+    a = p;
+
+    while (a != NULL)
+    {
+        b = q;
+
+        while (b != NULL)
+        {
+            c = a-&gt;coeff * b-&gt;coeff;
+            power = a-&gt;pow + b-&gt;pow;
+
+            head = insert(head, c, power);
+
+            b = b-&gt;next;
+        }
+
+        a = a-&gt;next;
+    }
+
+    return head;
+}
+
+void display(struct node *p)
+{
+    int first = 1;
+
+    while (p != NULL)
+    {
+        if (p-&gt;coeff != 0)
+        {
+            if (!first &amp;&amp; p-&gt;coeff &gt; 0)
+                printf(&quot; + &quot;);
+
+            if (p-&gt;coeff &lt; 0)
+                printf(&quot; - &quot;);
+
+            if (p-&gt;coeff &lt; 0)
+                printf(&quot;%dx^%d&quot;, -p-&gt;coeff, p-&gt;pow);
+            else
+                printf(&quot;%dx^%d&quot;, p-&gt;coeff, p-&gt;pow);
+
+            first = 0;
+        }
+
+        p = p-&gt;next;
+    }
+
+    if (first)
+        printf(&quot;0&quot;);
+
+    printf(&quot;\n&quot;);
+}
+
+int main()
+{
+    struct node *p, *q, *result;
+
+    printf(&quot;Enter first polynomial:\n&quot;);
+    p = create();
+
+    printf(&quot;Enter second polynomial:\n&quot;);
+    q = create();
+
+    printf(&quot;\nFirst polynomial: &quot;);
+    display(p);
+
+    printf(&quot;Second polynomial: &quot;);
+    display(q);
+
+    result = multiply(p, q);
+
+    printf(&quot;Multiplication: &quot;);
+    display(result);
+
+    return 0;
+}</pre>
+<h2>Output</h2>
+<pre class="out">Enter first polynomial:
+Enter number of terms: 2
+Enter coefficient and power: 5 2
+Enter coefficient and power: 3 1
+Enter second polynomial:
+Enter number of terms: 2
+Enter coefficient and power: 4 2
+Enter coefficient and power: 2 0
+
+First polynomial: 5x^2 + 3x^1
+Second polynomial: 4x^2 + 2x^0
+Multiplication: 20x^4 + 10x^2 + 12x^3 + 6x^1</pre>
+<p class="links"><a href="q10.html">&larr; Previous</a> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; </p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>

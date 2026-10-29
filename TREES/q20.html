@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q20 - Trees</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Trees</b></a></p>
+<h1>Q20. Count the number of nodes in binary search tree constructed dynamically</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+struct node
+{
+    int data;
+    struct node *left, *right;
+};
+
+struct node *insert(struct node *root, int x)
+{
+    if (root == NULL)
+    {
+        root = (struct node *)malloc(sizeof(struct node));
+        root-&gt;data = x;
+        root-&gt;left = NULL;
+        root-&gt;right = NULL;
+    }
+    else if (x &lt; root-&gt;data)
+        root-&gt;left = insert(root-&gt;left, x);
+    else if (x &gt; root-&gt;data)
+        root-&gt;right = insert(root-&gt;right, x);
+
+    return root;
+}
+
+int count(struct node *root)
+{
+    if (root == NULL)
+        return 0;
+
+    return 1 + count(root-&gt;left) + count(root-&gt;right);
+}
+
+int main()
+{
+    struct node *root = NULL;
+    int n, x, i;
+
+    printf(&quot;Enter number of nodes: &quot;);
+    scanf(&quot;%d&quot;, &amp;n);
+
+    for (i = 0; i &lt; n; i++)
+    {
+        printf(&quot;Enter value: &quot;);
+        scanf(&quot;%d&quot;, &amp;x);
+        root = insert(root, x);
+    }
+
+    printf(&quot;Total nodes = %d&quot;, count(root));
+
+    return 0;
+}</pre>
+<h2>Output</h2>
+<pre class="out">Enter number of nodes: 5
+Enter value: 50
+Enter value: 30
+Enter value: 70
+Enter value: 20
+Enter value: 40
+Total nodes = 5</pre>
+<p class="links"><a href="q19.html">&larr; Previous</a> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; </p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>

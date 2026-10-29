@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q5 - Multi Dimension Arrays</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Multi Dimension Arrays</b></a></p>
+<h1>Q5. Enter a Matrix from user, copy it in another matrix of same size?</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+
+int main()
+{
+    int a[4][2], b[4][2];
+    int i, j;
+
+    printf(&quot;Enter matrix elements:\n&quot;);
+
+    for(i = 0; i &lt; 4; i++)
+    {
+        for(j = 0; j &lt; 2; j++)
+        {
+            scanf(&quot;%d&quot;, &amp;a[i][j]);
+        }
+    }
+
+    for(i = 0; i &lt; 4; i++)
+    {
+        for(j = 0; j &lt; 2; j++)
+        {
+            b[i][j] = a[i][j];
+        }
+    }
+
+    printf(&quot;Copied matrix is:\n&quot;);
+
+    for(i = 0; i &lt; 4; i++)
+    {
+        for(j = 0; j &lt; 2; j++)
+        {
+            printf(&quot;%d &quot;, b[i][j]);
+        }
+        printf(&quot;\n&quot;);
+    }
+
+    return 0;
+}</pre>
+<h2>Output</h2>
+<pre class="out">Enter matrix elements:
+1
+2
+3
+4
+5
+6
+7
+8
+Copied matrix is:
+1 2 
+3 4 
+5 6 
+7 8 </pre>
+<p class="links"><a href="q4.html">&larr; Previous</a> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; <a href="q6.html">Next &rarr;</a></p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>

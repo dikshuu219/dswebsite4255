@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q23 - Strings</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Strings</b></a></p>
+<h1>Q23. Enter a sentence from user and then enter the word and count the occurence of that word in the sentence.</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main()
+{
+    char sentence[200], word[50];
+    int i, j, count = 0;
+
+    printf(&quot;Enter a sentence: &quot;);
+    fgets(sentence, sizeof(sentence), stdin);
+
+    printf(&quot;Enter a word: &quot;);
+    scanf(&quot;%s&quot;, word);
+
+    for(i = 0; sentence[i] != &#x27;\0&#x27;; i++)
+    {
+        for(j = 0; word[j] != &#x27;\0&#x27;; j++)
+        {
+            if(sentence[i + j] != word[j])
+                break;
+        }
+
+        if(word[j] == &#x27;\0&#x27;)
+            count++;
+    }
+
+    printf(&quot;Occurrence of word = %d&quot;, count);
+
+    return 0;
+}</pre>
+<h2>Output</h2>
+<pre class="out">Enter a sentence: the cat and the dog and the bird
+Enter a word: the
+Occurrence of word = 3</pre>
+<p class="links"><a href="q22.html">&larr; Previous</a> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; <a href="q24.html">Next &rarr;</a></p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>

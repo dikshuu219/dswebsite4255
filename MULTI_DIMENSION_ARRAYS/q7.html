@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q7 - Multi Dimension Arrays</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Multi Dimension Arrays</b></a></p>
+<h1>Q7. Create a tic tac toe game using 2D Arrays.</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+
+int main()
+{
+    char a[3][3] = {
+        {&#x27;1&#x27;, &#x27;2&#x27;, &#x27;3&#x27;},
+        {&#x27;4&#x27;, &#x27;5&#x27;, &#x27;6&#x27;},
+        {&#x27;7&#x27;, &#x27;8&#x27;, &#x27;9&#x27;}
+    };
+
+    int i, j, choice, row, col, moves = 0;
+    char player = &#x27;X&#x27;;
+    int win = 0;
+
+    while(moves &lt; 9)
+    {
+        printf(&quot;\n&quot;);
+
+        for(i = 0; i &lt; 3; i++)
+        {
+            for(j = 0; j &lt; 3; j++)
+            {
+                printf(&quot; %c &quot;, a[i][j]);
+
+                if(j &lt; 2)
+                    printf(&quot;|&quot;);
+            }
+            printf(&quot;\n&quot;);
+
+            if(i &lt; 2)
+                printf(&quot;---|---|---\n&quot;);
+        }
+
+        printf(&quot;\nPlayer %c, enter position (1-9): &quot;, player);
+        scanf(&quot;%d&quot;, &amp;choice);
+
+        if(choice &lt; 1 || choice &gt; 9)
+        {
+            printf(&quot;Invalid position! Try again.\n&quot;);
+            continue;
+        }
+
+        row = (choice - 1) / 3;
+        col = (choice - 1) % 3;
+
+        if(a[row][col] == &#x27;X&#x27; || a[row][col] == &#x27;O&#x27;)
+        {
+            printf(&quot;Position already taken! Try again.\n&quot;);
+            continue;
+        }
+
+        a[row][col] = player;
+        moves++;
+
+        for(i = 0; i &lt; 3; i++)
+        {
+            if(a[i][0] == player &amp;&amp;
+               a[i][1] == player &amp;&amp;
+               a[i][2] == player)
+                win = 1;
+
+            if(a[0][i] == player &amp;&amp;
+               a[1][i] == player &amp;&amp;
+               a[2][i] == player)
+                win = 1;
+        }
+
+        if(a[0][0] == player &amp;&amp;
+           a[1][1] == player &amp;&amp;
+           a[2][2] == player)
+            win = 1;
+
+        if(a[0][2] == player &amp;&amp;
+           a[1][1] == player &amp;&amp;
+           a[2][0] == player)
+            win = 1;
+
+        if(win == 1)
+        {
+            printf(&quot;\nPlayer %c wins!\n&quot;, player);
+            break;
+        }
+
+        if(player == &#x27;X&#x27;)
+            player = &#x27;O&#x27;;
+        else
+            player = &#x27;X&#x27;;
+    }
+
+    if(win == 0)
+        printf(&quot;\nMatch Draw!\n&quot;);
+
+    printf(&quot;\nFinal Board:\n&quot;);
+
+    for(i = 0; i &lt; 3; i++)
+    {
+        for(j = 0; j &lt; 3; j++)
+        {
+            printf(&quot; %c &quot;, a[i][j]);
+
+            if(j &lt; 2)
+                printf(&quot;|&quot;);
+        }
+        printf(&quot;\n&quot;);
+
+        if(i &lt; 2)
+            printf(&quot;---|---|---\n&quot;);
+    }
+
+    return 0;
+}</pre>
+<h2>Output</h2>
+<pre class="out"> 1 | 2 | 3 
+---|---|---
+ 4 | 5 | 6 
+---|---|---
+ 7 | 8 | 9 
+
+Player X, enter position (1-9): 1
+
+ X | 2 | 3 
+---|---|---
+ 4 | 5 | 6 
+---|---|---
+ 7 | 8 | 9 
+
+Player O, enter position (1-9): 4
+
+ X | 2 | 3 
+---|---|---
+ O | 5 | 6 
+---|---|---
+ 7 | 8 | 9 
+
+Player X, enter position (1-9): 2
+
+ X | X | 3 
+---|---|---
+ O | 5 | 6 
+---|---|---
+ 7 | 8 | 9 
+
+Player O, enter position (1-9): 5
+
+ X | X | 3 
+---|---|---
+ O | O | 6 
+---|---|---
+ 7 | 8 | 9 
+
+Player X, enter position (1-9): 3
+
+Player X wins!
+
+Final Board:
+ X | X | X 
+---|---|---
+ O | O | 6 
+---|---|---
+ 7 | 8 | 9 </pre>
+<p class="links"><a href="q6.html">&larr; Previous</a> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; </p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>

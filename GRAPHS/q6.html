@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q6 - Graphs</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Graphs</b></a></p>
+<h1>Q6. Traverse the adjacent list with breadth first search</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+struct node
+{
+    int vertex;
+    struct node *next;
+};
+
+struct node *a[10];
+int visited[10], queue[10];
+
+void insert(int x, int y)
+{
+    struct node *p;
+
+    p = (struct node *)malloc(sizeof(struct node));
+    p-&gt;vertex = y;
+    p-&gt;next = a[x];
+    a[x] = p;
+
+    p = (struct node *)malloc(sizeof(struct node));
+    p-&gt;vertex = x;
+    p-&gt;next = a[y];
+    a[y] = p;
+}
+
+void BFS(int start, int n)
+{
+    int front = 0, rear = 0, v;
+    struct node *p;
+
+    queue[rear++] = start;
+    visited[start] = 1;
+
+    while (front &lt; rear)
+    {
+        v = queue[front++];
+        printf(&quot;%d &quot;, v);
+
+        p = a[v];
+
+        while (p != NULL)
+        {
+            if (visited[p-&gt;vertex] == 0)
+            {
+                queue[rear++] = p-&gt;vertex;
+                visited[p-&gt;vertex] = 1;
+            }
+
+            p = p-&gt;next;
+        }
+    }
+}
+
+int main()
+{
+    int n, e, i, x, y, start;
+
+    printf(&quot;Enter number of vertices: &quot;);
+    scanf(&quot;%d&quot;, &amp;n);
+
+    for (i = 0; i &lt; n; i++)
+        a[i] = NULL;
+
+    printf(&quot;Enter number of edges: &quot;);
+    scanf(&quot;%d&quot;, &amp;e);
+
+    for (i = 0; i &lt; e; i++)
+    {
+        printf(&quot;Enter edge: &quot;);
+        scanf(&quot;%d %d&quot;, &amp;x, &amp;y);
+        insert(x, y);
+    }
+
+    printf(&quot;Enter starting vertex: &quot;);
+    scanf(&quot;%d&quot;, &amp;start);
+
+    printf(&quot;BFS Traversal: &quot;);
+    BFS(start, n);
+
+    return 0;
+}</pre>
+<h2>Output</h2>
+<pre class="out">Enter number of vertices: 4
+Enter number of edges: 4
+Enter edge: 0 1
+Enter edge: 0 2
+Enter edge: 1 2
+Enter edge: 2 3
+Enter starting vertex: 0
+BFS Traversal: 0 2 1 3 </pre>
+<p class="links"><a href="q5.html">&larr; Previous</a> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; </p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>

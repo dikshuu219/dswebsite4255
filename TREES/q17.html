@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q17 - Trees</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Trees</b></a></p>
+<h1>Q17. Create strictly binary tree from the given input by the user (dynamically)</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+struct node
+{
+    int data;
+    struct node *left, *right;
+};
+
+struct node *create()
+{
+    struct node *p;
+    int x;
+
+    printf(&quot;Enter value (-1 for no node): &quot;);
+    scanf(&quot;%d&quot;, &amp;x);
+
+    if (x == -1)
+        return NULL;
+
+    p = (struct node *)malloc(sizeof(struct node));
+    p-&gt;data = x;
+
+    printf(&quot;Does %d have children? (1 for Yes, 0 for No): &quot;, x);
+    scanf(&quot;%d&quot;, &amp;x);
+
+    if (x == 1)
+    {
+        printf(&quot;Enter left child of %d\n&quot;, p-&gt;data);
+        p-&gt;left = create();
+
+        printf(&quot;Enter right child of %d\n&quot;, p-&gt;data);
+        p-&gt;right = create();
+    }
+    else
+    {
+        p-&gt;left = NULL;
+        p-&gt;right = NULL;
+    }
+
+    return p;
+}
+
+void preorder(struct node *root)
+{
+    if (root != NULL)
+    {
+        printf(&quot;%d &quot;, root-&gt;data);
+        preorder(root-&gt;left);
+        preorder(root-&gt;right);
+    }
+}
+
+int main()
+{
+    struct node *root;
+
+    printf(&quot;Create Strictly Binary Tree:\n&quot;);
+    root = create();
+
+    printf(&quot;Preorder traversal: &quot;);
+    preorder(root);
+
+    return 0;
+}</pre>
+<h2>Output</h2>
+<pre class="out">Create Strictly Binary Tree:
+Enter value (-1 for no node): 1
+Does 1 have children? (1 for Yes, 0 for No): 1
+Enter left child of 1
+Enter value (-1 for no node): 2
+Does 2 have children? (1 for Yes, 0 for No): 0
+Enter right child of 1
+Enter value (-1 for no node): 3
+Does 3 have children? (1 for Yes, 0 for No): 0
+Preorder traversal: 1 2 3 </pre>
+<p class="links"><a href="q16.html">&larr; Previous</a> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; <a href="q18.html">Next &rarr;</a></p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>
