@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q8 - Recursion</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Recursion</b></a></p>
+<h1>Q8. Find the arithmetic mean of an integer array using recursion.</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+
+int sum(int arr[], int n)
+{
+    if(n == 0)
+        return 0;
+    else
+        return arr[n - 1] + sum(arr, n - 1);
+}
+
+int main()
+{
+    int arr[100], n, i;
+    float mean;
+
+    printf(&quot;Enter size of array: &quot;);
+    scanf(&quot;%d&quot;, &amp;n);
+
+    printf(&quot;Enter array elements: &quot;);
+    for(i = 0; i &lt; n; i++)
+        scanf(&quot;%d&quot;, &amp;arr[i]);
+
+    mean = (float)sum(arr, n) / n;
+
+    printf(&quot;Arithmetic Mean = %.2f&quot;, mean);
+
+    return 0;
+}</pre>
+<h2>Output</h2>
+<pre class="out">Enter size of array: 5
+Enter array elements: 12
+7
+3
+19
+5
+Arithmetic Mean = 9.20</pre>
+<p class="links"><a href="q7.html">&larr; Previous</a> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; </p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>

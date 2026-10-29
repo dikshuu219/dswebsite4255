@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q13 - Stacks</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Stacks</b></a></p>
+<h1>Q13. Tower of Hanoi Using Stacks</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+
+int a[10], b[10], c[10];
+int top1 = -1, top2 = -1, top3 = -1;
+
+void push(int s[], int *top, int x)
+{
+    (*top)++;
+    s[*top] = x;
+}
+
+int pop(int s[], int *top)
+{
+    int x = s[*top];
+    (*top)--;
+    return x;
+}
+
+void hanoi(int n, char from, char to, char aux)
+{
+    if(n == 1)
+    {
+        printf(&quot;Move disk 1 from %c to %c\n&quot;, from, to);
+        return;
+    }
+
+    hanoi(n-1, from, aux, to);
+    printf(&quot;Move disk %d from %c to %c\n&quot;, n, from, to);
+    hanoi(n-1, aux, to, from);
+}
+
+int main()
+{
+    int n, i;
+
+    printf(&quot;Enter number of disks (max 10): &quot;);
+    scanf(&quot;%d&quot;, &amp;n);
+
+    if(n &lt; 1 || n &gt; 10)
+    {
+        printf(&quot;Invalid number&quot;);
+        return 0;
+    }
+
+    for(i = n; i &gt;= 1; i--)
+        push(a, &amp;top1, i);
+
+    printf(&quot;Tower of Hanoi moves:\n&quot;);
+    hanoi(n, &#x27;A&#x27;, &#x27;C&#x27;, &#x27;B&#x27;);
+
+    return 0;
+}</pre>
+<h2>Output</h2>
+<pre class="out">Enter number of disks (max 10): 3
+Tower of Hanoi moves:
+Move disk 1 from A to C
+Move disk 2 from A to B
+Move disk 1 from C to B
+Move disk 3 from A to C
+Move disk 1 from B to A
+Move disk 2 from B to C
+Move disk 1 from A to C</pre>
+<p class="links"><a href="q12.html">&larr; Previous</a> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; </p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>

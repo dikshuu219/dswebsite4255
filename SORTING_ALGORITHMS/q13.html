@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q13 - Sorting Algorithms</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Sorting Algorithms</b></a></p>
+<h1>Q13. Enter a string array from the user and perform bubble sort algorithm through iteration. also calculate the worst and best complexity with exact time.</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main()
+{
+    char a[100][50], temp[50];
+    int size, i, j, comparisons = 0;
+
+    printf(&quot;Enter number of strings: &quot;);
+    scanf(&quot;%d&quot;, &amp;size);
+
+    printf(&quot;Enter strings:\n&quot;);
+    for(i = 0; i &lt; size; i++)
+        scanf(&quot;%49s&quot;, a[i]);
+
+    for(i = 0; i &lt; size - 1; i++)
+    {
+        for(j = 0; j &lt; size - i - 1; j++)
+        {
+            comparisons++;
+
+            if(strcmp(a[j], a[j + 1]) &gt; 0)
+            {
+                strcpy(temp, a[j]);
+                strcpy(a[j], a[j + 1]);
+                strcpy(a[j + 1], temp);
+            }
+        }
+    }
+
+    printf(&quot;Sorted strings:\n&quot;);
+    for(i = 0; i &lt; size; i++)
+        printf(&quot;%s &quot;, a[i]);
+
+    printf(&quot;\nTotal comparisons = %d&quot;, comparisons);
+    printf(&quot;\nBest Case Time Complexity = O(n^2)&quot;);
+    printf(&quot;\nWorst Case Time Complexity = O(n^2)&quot;);
+
+    return 0;
+}</pre>
+<h2>Output</h2>
+<pre class="out">Enter number of strings: 4
+Enter strings:
+banana
+apple
+mango
+cherry
+Sorted strings:
+apple banana cherry mango 
+Total comparisons = 6
+Best Case Time Complexity = O(n^2)
+Worst Case Time Complexity = O(n^2)</pre>
+<p class="links"><a href="q12.html">&larr; Previous</a> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; <a href="q14.html">Next &rarr;</a></p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>

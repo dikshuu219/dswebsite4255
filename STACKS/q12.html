@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q12 - Stacks</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Stacks</b></a></p>
+<h1>Q12. Create a program to evaluate the postfix expression.</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int stack[100], top = -1;
+
+void push(int x)
+{
+    top++;
+    stack[top] = x;
+}
+
+int pop()
+{
+    return stack[top--];
+}
+
+int main()
+{
+    char exp[100];
+    int i, a, b;
+
+    printf(&quot;Enter postfix expression: &quot;);
+    scanf(&quot;%s&quot;, exp);
+
+    for(i = 0; exp[i] != &#x27;\0&#x27;; i++)
+    {
+        if(exp[i] &gt;= &#x27;0&#x27; &amp;&amp; exp[i] &lt;= &#x27;9&#x27;)
+            push(exp[i] - &#x27;0&#x27;);
+        else
+        {
+            b = pop();
+            a = pop();
+
+            if(exp[i] == &#x27;+&#x27;)
+                push(a + b);
+            else if(exp[i] == &#x27;-&#x27;)
+                push(a - b);
+            else if(exp[i] == &#x27;*&#x27;)
+                push(a * b);
+            else if(exp[i] == &#x27;/&#x27;)
+                push(a / b);
+        }
+    }
+
+    printf(&quot;Result = %d&quot;, pop());
+
+    return 0;
+}</pre>
+<h2>Output</h2>
+<pre class="out">Enter postfix expression: 23*54*+9-
+Result = 17</pre>
+<p class="links"><a href="q11.html">&larr; Previous</a> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; <a href="q13.html">Next &rarr;</a></p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>

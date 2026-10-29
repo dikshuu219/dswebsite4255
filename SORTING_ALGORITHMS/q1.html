@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q1 - Sorting Algorithms</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Sorting Algorithms</b></a></p>
+<h1>Q1. Enter a integer array from the user and perform selection sort algorithm through iteration. also calculate the worst and best complexity with exact time.</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+
+
+int main()
+{
+    int a[100], size, i, j, minimum, temp;
+    int comparisons=0;
+
+    printf(&quot;Enter number of elements: &quot;);
+    scanf(&quot;%d&quot;, &amp;size);
+
+    printf(&quot;Enter array elements:\n&quot;);
+    for (i = 0; i &lt; size; i++)
+        scanf(&quot;%d&quot;, &amp;array[i]);
+}
+   //selection sort using iteration
+
+    for (i = 0; i &lt; size - 1; i++)
+    {
+        minimum = i;
+
+        for (j = i + 1; j &lt; size; j++)
+        {
+         comparisons++;
+         if(array[j]&lt;array[minimum])
+         {
+                minimum = j;
+        }
+    }
+    //swap the elements
+        temp = array[i];
+        array[i] = array[minimum];
+        array[minimum] = temp;
+    }
+
+   
+
+    printf(&quot;Sorted array in assending order:\n &quot;);
+    for (i = 0; i &lt; size; i++)
+      {
+          printf(&quot;%d &quot;, array[i]);
+      }
+
+    printf(&quot;\nTotal comparisons=%d&quot;, comparisons);
+    printf(&quot;\nBest Case Time Complexity=O(n^2)&quot;);
+    printf(&quot;\nWorst Case Time Complexity=O(n^2)&quot;);
+
+    return 0;
+}</pre>
+
+<p class="links"> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; <a href="q2.html">Next &rarr;</a></p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q10 - Stacks</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Stacks</b></a></p>
+<h1>Q10. Enter the infix expression from user and convert into postfix expression.</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+
+char stack[100];
+int top = -1;
+
+void push(char x)
+{
+    stack[++top] = x;
+}
+
+char pop()
+{
+    return stack[top--];
+}
+
+int priority(char x)
+{
+    if(x == &#x27;*&#x27; || x == &#x27;/&#x27;)
+        return 2;
+    if(x == &#x27;+&#x27; || x == &#x27;-&#x27;)
+        return 1;
+    return 0;
+}
+
+int main()
+{
+    char infix[100], postfix[100];
+    int i, j = 0;
+
+    printf(&quot;Enter infix expression: &quot;);
+    scanf(&quot;%s&quot;, infix);
+
+    for(i = 0; infix[i] != &#x27;\0&#x27;; i++)
+    {
+        if((infix[i] &gt;= &#x27;A&#x27; &amp;&amp; infix[i] &lt;= &#x27;Z&#x27;) ||
+           (infix[i] &gt;= &#x27;a&#x27; &amp;&amp; infix[i] &lt;= &#x27;z&#x27;) ||
+           (infix[i] &gt;= &#x27;0&#x27; &amp;&amp; infix[i] &lt;= &#x27;9&#x27;))
+            postfix[j++] = infix[i];
+
+        else if(infix[i] == &#x27;(&#x27;)
+            push(infix[i]);
+
+        else if(infix[i] == &#x27;)&#x27;)
+        {
+            while(top != -1 &amp;&amp; stack[top] != &#x27;(&#x27;)
+                postfix[j++] = pop();
+
+            if(top != -1)
+                pop();
+        }
+        else
+        {
+            while(top != -1 &amp;&amp; stack[top] != &#x27;(&#x27; &amp;&amp;
+                  priority(stack[top]) &gt;= priority(infix[i]))
+                postfix[j++] = pop();
+
+            push(infix[i]);
+        }
+    }
+
+    while(top != -1)
+        postfix[j++] = pop();
+
+    postfix[j] = &#x27;\0&#x27;;
+
+    printf(&quot;Postfix expression: %s&quot;, postfix);
+
+    return 0;
+}</pre>
+<h2>Output</h2>
+<pre class="out">Enter infix expression: (A+B)*C-D
+Postfix expression: AB+C*D-</pre>
+<p class="links"><a href="q9.html">&larr; Previous</a> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; <a href="q11.html">Next &rarr;</a></p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>

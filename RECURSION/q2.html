@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q2 - Recursion</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Recursion</b></a></p>
+<h1>Q2. Calculate fibonacci of a number using recursion</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+
+int fib(int n)
+{
+    if(n == 0)
+        return 0;
+    else if(n == 1)
+        return 1;
+    else
+        return fib(n - 1) + fib(n - 2);
+}
+
+int main()
+{
+    int n, i;
+
+    printf(&quot;Enter number of terms: &quot;);
+    scanf(&quot;%d&quot;, &amp;n);
+
+    for(i = 0; i &lt; n; i++)
+    {
+        printf(&quot;%d &quot;, fib(i));
+    }
+
+    return 0;
+}</pre>
+<h2>Output</h2>
+<pre class="out">Enter number of terms: 7
+0 1 1 2 3 5 8 </pre>
+<p class="links"><a href="q1.html">&larr; Previous</a> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; <a href="q3.html">Next &rarr;</a></p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>

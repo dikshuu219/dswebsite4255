@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q7 - Stacks</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Stacks</b></a></p>
+<h1>Q7. Create two integer stacks in a single array.</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+
+int a[10];
+int top1 = -1, top2 = 10;
+
+void push1()
+{
+    int x;
+
+    if(top1 + 1 == top2)
+        printf(&quot;Array is Full&quot;);
+    else
+    {
+        printf(&quot;Enter number: &quot;);
+        scanf(&quot;%d&quot;, &amp;x);
+        top1++;
+        a[top1] = x;
+    }
+}
+
+void push2()
+{
+    int x;
+
+    if(top1 + 1 == top2)
+        printf(&quot;Array is Full&quot;);
+    else
+    {
+        printf(&quot;Enter number: &quot;);
+        scanf(&quot;%d&quot;, &amp;x);
+        top2--;
+        a[top2] = x;
+    }
+}
+
+void pop1()
+{
+    if(top1 == -1)
+        printf(&quot;Stack 1 is Empty&quot;);
+    else
+    {
+        printf(&quot;Deleted: %d&quot;, a[top1]);
+        top1--;
+    }
+}
+
+void pop2()
+{
+    if(top2 == 10)
+        printf(&quot;Stack 2 is Empty&quot;);
+    else
+    {
+        printf(&quot;Deleted: %d&quot;, a[top2]);
+        top2++;
+    }
+}
+
+int main()
+{
+    int ch;
+
+    while(1)
+    {
+        printf(&quot;\n\n1. Push Stack 1&quot;);
+        printf(&quot;\n2. Pop Stack 1&quot;);
+        printf(&quot;\n3. Push Stack 2&quot;);
+        printf(&quot;\n4. Pop Stack 2&quot;);
+        printf(&quot;\n5. Exit&quot;);
+        printf(&quot;\nEnter choice: &quot;);
+        scanf(&quot;%d&quot;, &amp;ch);
+
+        if(ch == 1)
+            push1();
+        else if(ch == 2)
+            pop1();
+        else if(ch == 3)
+            push2();
+        else if(ch == 4)
+            pop2();
+        else if(ch == 5)
+            break;
+        else
+            printf(&quot;Wrong choice&quot;);
+    }
+
+    return 0;
+}</pre>
+<h2>Output</h2>
+<pre class="out">1. Push Stack 1
+2. Pop Stack 1
+3. Push Stack 2
+4. Pop Stack 2
+5. Exit
+Enter choice: 1
+Enter number: 10
+
+
+1. Push Stack 1
+2. Pop Stack 1
+3. Push Stack 2
+4. Pop Stack 2
+5. Exit
+Enter choice: 1
+Enter number: 20
+
+
+1. Push Stack 1
+2. Pop Stack 1
+3. Push Stack 2
+4. Pop Stack 2
+5. Exit
+Enter choice: 3
+Enter number: 99
+
+
+1. Push Stack 1
+2. Pop Stack 1
+3. Push Stack 2
+4. Pop Stack 2
+5. Exit
+Enter choice: 3
+Enter number: 88
+
+
+1. Push Stack 1
+2. Pop Stack 1
+3. Push Stack 2
+4. Pop Stack 2
+5. Exit
+Enter choice: 2
+Deleted: 20
+
+1. Push Stack 1
+2. Pop Stack 1
+3. Push Stack 2
+4. Pop Stack 2
+5. Exit
+Enter choice: 4
+Deleted: 88
+
+1. Push Stack 1
+2. Pop Stack 1
+3. Push Stack 2
+4. Pop Stack 2
+5. Exit
+Enter choice: 5</pre>
+<p class="links"><a href="q6.html">&larr; Previous</a> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; <a href="q8.html">Next &rarr;</a></p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>

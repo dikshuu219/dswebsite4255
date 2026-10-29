@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q17 - Sorting Algorithms</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Sorting Algorithms</b></a></p>
+<h1>Q17. Enter a string array from the user and perform merge sort algorithm through iteration. also calculate the worst and best complexity with exact time.</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main()
+{
+    char a[100][50], temp[100][50];
+    int size, i, j, k, left, mid, right, width;
+    int comparisons = 0;
+
+    printf(&quot;Enter number of strings: &quot;);
+    scanf(&quot;%d&quot;, &amp;size);
+
+    printf(&quot;Enter strings:\n&quot;);
+    for(i = 0; i &lt; size; i++)
+        scanf(&quot;%49s&quot;, a[i]);
+
+    for(width = 1; width &lt; size; width = width * 2)
+    {
+        for(left = 0; left &lt; size; left = left + 2 * width)
+        {
+            mid = left + width;
+            right = left + 2 * width;
+
+            if(mid &gt; size)
+                mid = size;
+
+            if(right &gt; size)
+                right = size;
+
+            i = left;
+            j = mid;
+            k = left;
+
+            while(i &lt; mid &amp;&amp; j &lt; right)
+            {
+                comparisons++;
+
+                if(strcmp(a[i], a[j]) &lt;= 0)
+                    strcpy(temp[k++], a[i++]);
+                else
+                    strcpy(temp[k++], a[j++]);
+            }
+
+            while(i &lt; mid)
+                strcpy(temp[k++], a[i++]);
+
+            while(j &lt; right)
+                strcpy(temp[k++], a[j++]);
+
+            for(i = left; i &lt; right; i++)
+                strcpy(a[i], temp[i]);
+        }
+    }
+
+    printf(&quot;Sorted strings:\n&quot;);
+    for(i = 0; i &lt; size; i++)
+        printf(&quot;%s &quot;, a[i]);
+
+    printf(&quot;\nTotal comparisons = %d&quot;, comparisons);
+    printf(&quot;\nBest Case Time Complexity = O(n log n)&quot;);
+    printf(&quot;\nWorst Case Time Complexity = O(n log n)&quot;);
+
+    return 0;
+}</pre>
+<h2>Output</h2>
+<pre class="out">Enter number of strings: 4
+Enter strings:
+banana
+apple
+mango
+cherry
+Sorted strings:
+apple banana cherry mango 
+Total comparisons = 4
+Best Case Time Complexity = O(n log n)
+Worst Case Time Complexity = O(n log n)</pre>
+<p class="links"><a href="q16.html">&larr; Previous</a> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; <a href="q18.html">Next &rarr;</a></p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>

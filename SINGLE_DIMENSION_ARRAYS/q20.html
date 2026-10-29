@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q20 - Single Dimension Arrays</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Single Dimension Arrays</b></a></p>
+<h1>Q20. Trapping Rain Water Problem: Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+
+int main()
+{
+    int a[100], n, i, j;
+    int left, right, water = 0;
+
+    printf(&quot;Enter number of bars: &quot;);
+    scanf(&quot;%d&quot;, &amp;n);
+
+    printf(&quot;Enter heights of bars: &quot;);
+    for(i = 0; i &lt; n; i++)
+    {
+        scanf(&quot;%d&quot;, &amp;a[i]);
+    }
+
+    for(i = 1; i &lt; n - 1; i++)
+    {
+        left = a[i];
+        right = a[i];
+
+        for(j = 0; j &lt; i; j++)
+        {
+            if(a[j] &gt; left)
+                left = a[j];
+        }
+
+        for(j = i + 1; j &lt; n; j++)
+        {
+            if(a[j] &gt; right)
+                right = a[j];
+        }
+
+        if(left &lt; right)
+            water = water + left - a[i];
+        else
+            water = water + right - a[i];
+    }
+
+    printf(&quot;Trapped water = %d&quot;, water);
+
+    return 0;
+}</pre>
+<h2>Output</h2>
+<pre class="out">Enter number of bars: 5
+Enter heights of bars: 3
+0
+2
+0
+4
+Trapped water = 7</pre>
+<p class="links"><a href="q19.html">&larr; Previous</a> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; </p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>

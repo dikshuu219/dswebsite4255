@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q5 - Recursion</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Recursion</b></a></p>
+<h1>Q5. Find the largest element in the integer array using recursion.</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+
+int largest(int arr[], int n)
+{
+    if(n == 1)
+        return arr[0];
+
+    int max = largest(arr, n - 1);
+
+    if(arr[n - 1] &gt; max)
+        return arr[n - 1];
+    else
+        return max;
+}
+
+int main()
+{
+    int arr[100], n, i;
+
+    printf(&quot;Enter size of array: &quot;);
+    scanf(&quot;%d&quot;, &amp;n);
+
+    printf(&quot;Enter array elements: &quot;);
+    for(i = 0; i &lt; n; i++)
+        scanf(&quot;%d&quot;, &amp;arr[i]);
+
+    printf(&quot;Largest element = %d&quot;, largest(arr, n));
+
+    return 0;
+}</pre>
+<h2>Output</h2>
+<pre class="out">Enter size of array: 5
+Enter array elements: 12
+7
+3
+19
+5
+Largest element = 19</pre>
+<p class="links"><a href="q4.html">&larr; Previous</a> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; <a href="q6.html">Next &rarr;</a></p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>

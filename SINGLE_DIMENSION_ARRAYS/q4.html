@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q4 - Single Dimension Arrays</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Single Dimension Arrays</b></a></p>
+<h1>Q4. Enter an array from user and copy it into another array in reverse order?</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+
+int main()
+{
+    int a[100], b[100], n, i;
+
+    printf(&quot;Enter size of array: &quot;);
+    scanf(&quot;%d&quot;, &amp;n);
+
+    printf(&quot;Enter array elements: &quot;);
+    for(i = 0; i &lt; n; i++)
+    {
+        scanf(&quot;%d&quot;, &amp;a[i]);
+    }
+
+    for(i = 0; i &lt; n; i++)
+    {
+        b[i] = a[n - 1 - i];
+    }
+
+    printf(&quot;Second array in reverse order: &quot;);
+    for(i = 0; i &lt; n; i++)
+    {
+        printf(&quot;%d &quot;, b[i]);
+    }
+
+    return 0;
+}</pre>
+<h2>Output</h2>
+<pre class="out">Enter size of array: 5
+Enter array elements: 12
+7
+3
+19
+5
+Second array in reverse order: 5 19 3 7 12 </pre>
+<p class="links"><a href="q3.html">&larr; Previous</a> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; <a href="q5.html">Next &rarr;</a></p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>

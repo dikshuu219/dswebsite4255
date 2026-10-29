@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q5 - Stacks</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Stacks</b></a></p>
+<h1>Q5. Enter the string from the user and reverse the string using stacks.</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main()
+{
+    char str[100], stack[100];
+    int top = -1, i;
+
+    printf(&quot;Enter a string: &quot;);
+    scanf(&quot;%s&quot;, str);
+
+    for(i = 0; str[i] != &#x27;\0&#x27;; i++)
+    {
+        top++;
+        stack[top] = str[i];
+    }
+
+    printf(&quot;Reverse string: &quot;);
+
+    while(top != -1)
+    {
+        printf(&quot;%c&quot;, stack[top]);
+        top--;
+    }
+
+    return 0;
+}</pre>
+<h2>Output</h2>
+<pre class="out">Enter a string: hello
+Reverse string: olleh</pre>
+<p class="links"><a href="q4.html">&larr; Previous</a> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; <a href="q6.html">Next &rarr;</a></p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>

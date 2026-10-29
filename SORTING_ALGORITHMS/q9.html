@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q9 - Sorting Algorithms</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Sorting Algorithms</b></a></p>
+<h1>Q9. Enter a integer array from the user and perform quick sort algorithm through iteration. also calculate the worst and best complexity with exact time.</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+
+int main()
+{
+    int a[100], stack[100], size, i, j;
+    int low, high, pivot, temp, top = -1;
+    int comparisons = 0;
+
+    printf(&quot;Enter number of elements: &quot;);
+    scanf(&quot;%d&quot;, &amp;size);
+
+    printf(&quot;Enter array elements:\n&quot;);
+    for(i = 0; i &lt; size; i++)
+        scanf(&quot;%d&quot;, &amp;a[i]);
+
+    if(size &gt; 1)
+    {
+        stack[++top] = 0;
+        stack[++top] = size - 1;
+    }
+
+    while(top &gt;= 0)
+    {
+        high = stack[top--];
+        low = stack[top--];
+
+        pivot = a[high];
+        i = low - 1;
+
+        for(j = low; j &lt; high; j++)
+        {
+            comparisons++;
+
+            if(a[j] &lt; pivot)
+            {
+                i++;
+                temp = a[i];
+                a[i] = a[j];
+                a[j] = temp;
+            }
+        }
+
+        temp = a[i + 1];
+        a[i + 1] = a[high];
+        a[high] = temp;
+
+        j = i + 1;
+
+        if(j - 1 &gt; low)
+        {
+            stack[++top] = low;
+            stack[++top] = j - 1;
+        }
+
+        if(j + 1 &lt; high)
+        {
+            stack[++top] = j + 1;
+            stack[++top] = high;
+        }
+    }
+
+    printf(&quot;Sorted array:\n&quot;);
+    for(i = 0; i &lt; size; i++)
+        printf(&quot;%d &quot;, a[i]);
+
+    printf(&quot;\nTotal comparisons = %d&quot;, comparisons);
+    printf(&quot;\nBest Case Time Complexity = O(n log n)&quot;);
+    printf(&quot;\nWorst Case Time Complexity = O(n^2)&quot;);
+
+    return 0;
+}</pre>
+<h2>Output</h2>
+<pre class="out">Enter number of elements: 5
+Enter array elements:
+64
+25
+12
+22
+11
+Sorted array:
+11 12 22 25 64 
+Total comparisons = 9
+Best Case Time Complexity = O(n log n)
+Worst Case Time Complexity = O(n^2)</pre>
+<p class="links"><a href="q8.html">&larr; Previous</a> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; <a href="q10.html">Next &rarr;</a></p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>

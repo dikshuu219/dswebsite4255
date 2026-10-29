@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q15 - Single Dimension Arrays</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Single Dimension Arrays</b></a></p>
+<h1>Q15. Enter an array from user and print all the palindrome numbers?</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+
+int main()
+{
+    int a[100], n, i, num, rem, rev;
+
+    printf(&quot;Enter size of array: &quot;);
+    scanf(&quot;%d&quot;, &amp;n);
+
+    printf(&quot;Enter array elements: &quot;);
+    for(i = 0; i &lt; n; i++)
+    {
+        scanf(&quot;%d&quot;, &amp;a[i]);
+    }
+
+    printf(&quot;Palindrome numbers are: &quot;);
+
+    for(i = 0; i &lt; n; i++)
+    {
+        num = a[i];
+        rev = 0;
+
+        while(num &gt; 0)
+        {
+            rem = num % 10;
+            rev = rev * 10 + rem;
+            num = num / 10;
+        }
+
+        if(a[i] == rev &amp;&amp; a[i] &gt;= 0)
+        {
+            printf(&quot;%d &quot;, a[i]);
+        }
+    }
+
+    return 0;
+}</pre>
+<h2>Output</h2>
+<pre class="out">Enter size of array: 6
+Enter array elements: 121
+45
+33
+7
+1001
+56
+Palindrome numbers are: 121 33 7 1001 </pre>
+<p class="links"><a href="q14.html">&larr; Previous</a> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; <a href="q16.html">Next &rarr;</a></p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q1 - Recursion</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Recursion</b></a></p>
+<h1>Q1. Calculate factorial of a number using recursion</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+
+int fact(int n)
+{
+    if(n == 0)
+        return 1;
+    else
+        return n * fact(n - 1);
+}
+
+int main()
+{
+    int n, result;
+
+    printf(&quot;Enter a number: &quot;);
+    scanf(&quot;%d&quot;, &amp;n);
+
+    result = fact(n);
+
+    printf(&quot;Factorial = %d&quot;, result);
+
+    return 0;
+}</pre>
+<h2>Output</h2>
+<pre class="out">Enter a number: 5
+Factorial = 120</pre>
+<p class="links"> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; <a href="q2.html">Next &rarr;</a></p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>

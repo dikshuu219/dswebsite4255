@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q1 - Stacks</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Stacks</b></a></p>
+<h1>Q1. Create a stack implementing the operations on an integer array (push, pop, peek, isempty, isfull)</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+
+int a[5], top = -1;
+
+void push()
+{
+    int x;
+
+    if(top == 4)
+        printf(&quot;Stack is Full&quot;);
+    else
+    {
+        printf(&quot;Enter number: &quot;);
+        scanf(&quot;%d&quot;, &amp;x);
+        top++;
+        a[top] = x;
+    }
+}
+
+void pop()
+{
+    if(top == -1)
+        printf(&quot;Stack is Empty&quot;);
+    else
+    {
+        printf(&quot;Deleted: %d&quot;, a[top]);
+        top--;
+    }
+}
+
+void peek()
+{
+    if(top == -1)
+        printf(&quot;Stack is Empty&quot;);
+    else
+        printf(&quot;Top value: %d&quot;, a[top]);
+}
+
+void isempty()
+{
+    if(top == -1)
+        printf(&quot;Stack is Empty&quot;);
+    else
+        printf(&quot;Stack is not Empty&quot;);
+}
+
+void isfull()
+{
+    if(top == 4)
+        printf(&quot;Stack is Full&quot;);
+    else
+        printf(&quot;Stack is not Full&quot;);
+}
+
+int main()
+{
+    int ch;
+
+    while(1)
+    {
+        printf(&quot;\n\n1. Push&quot;);
+        printf(&quot;\n2. Pop&quot;);
+        printf(&quot;\n3. Peek&quot;);
+        printf(&quot;\n4. IsEmpty&quot;);
+        printf(&quot;\n5. IsFull&quot;);
+        printf(&quot;\n6. Exit&quot;);
+        printf(&quot;\nEnter choice: &quot;);
+        scanf(&quot;%d&quot;, &amp;ch);
+
+        if(ch == 1)
+            push();
+        else if(ch == 2)
+            pop();
+        else if(ch == 3)
+            peek();
+        else if(ch == 4)
+            isempty();
+        else if(ch == 5)
+            isfull();
+        else if(ch == 6)
+            break;
+        else
+            printf(&quot;Wrong choice&quot;);
+    }
+
+    return 0;
+}</pre>
+<h2>Output</h2>
+<pre class="out">1. Push
+2. Pop
+3. Peek
+4. IsEmpty
+5. IsFull
+6. Exit
+Enter choice: 1
+Enter number: 12
+
+
+1. Push
+2. Pop
+3. Peek
+4. IsEmpty
+5. IsFull
+6. Exit
+Enter choice: 1
+Enter number: 7
+
+
+1. Push
+2. Pop
+3. Peek
+4. IsEmpty
+5. IsFull
+6. Exit
+Enter choice: 1
+Enter number: 3
+
+
+1. Push
+2. Pop
+3. Peek
+4. IsEmpty
+5. IsFull
+6. Exit
+Enter choice: 3
+Top value: 3
+
+1. Push
+2. Pop
+3. Peek
+4. IsEmpty
+5. IsFull
+6. Exit
+Enter choice: 2
+Deleted: 3
+
+1. Push
+2. Pop
+3. Peek
+4. IsEmpty
+5. IsFull
+6. Exit
+Enter choice: 4
+Stack is not Empty
+
+1. Push
+2. Pop
+3. Peek
+4. IsEmpty
+5. IsFull
+6. Exit
+Enter choice: 5
+Stack is not Full
+
+1. Push
+2. Pop
+3. Peek
+4. IsEmpty
+5. IsFull
+6. Exit
+Enter choice: 6</pre>
+<p class="links"> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; <a href="q2.html">Next &rarr;</a></p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>

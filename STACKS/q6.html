@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q6 - Stacks</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+<p>POST GRADUATE GOVERNMENT COLLEGE SECTOR-11 CHANDIGARH</p>
+<h2>DATA STRUCTURE PROGRAMS</h2>
+</header>
+<p><a href="index.html"><b>&larr; Back to Stacks</b></a></p>
+<h1>Q6. Create the program to match the single bracket using stacks.</h1>
+<h2>Program</h2>
+<pre>#include &lt;stdio.h&gt;
+
+int main()
+{
+    char str[100], stack[100];
+    int top = -1, i;
+
+    printf(&quot;Enter expression: &quot;);
+    scanf(&quot;%s&quot;, str);
+
+    for(i = 0; str[i] != &#x27;\0&#x27;; i++)
+    {
+        if(str[i] == &#x27;(&#x27;)
+        {
+            top++;
+            stack[top] = str[i];
+        }
+        else if(str[i] == &#x27;)&#x27;)
+        {
+            if(top == -1)
+            {
+                printf(&quot;Brackets are not matched&quot;);
+                return 0;
+            }
+            else
+                top--;
+        }
+    }
+
+    if(top == -1)
+        printf(&quot;Brackets are matched&quot;);
+    else
+        printf(&quot;Brackets are not matched&quot;);
+
+    return 0;
+}</pre>
+<h2>Output</h2>
+<pre class="out">Enter expression: ((a+b)*c)
+Brackets are matched</pre>
+<p class="links"><a href="q5.html">&larr; Previous</a> &nbsp;&nbsp; <a href="index.html">Back to topic</a> &nbsp;&nbsp; <a href="q7.html">Next &rarr;</a></p>
+<footer>NAME: DIKSHA | ROLL NO: 4255/25 | CLASS: BCA 2nd year</footer>
+</body>
+</html>
